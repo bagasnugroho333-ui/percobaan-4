@@ -1,268 +1,197 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AYAMKUU – Fresh & Crunchy</title>
-
-    <!-- FONT -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
-    <!-- AOS SCROLL REVEAL -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AYAMKUU — Crispy Lezat</title>
 
     <style>
         body {
             margin: 0;
-            font-family: 'Inter', sans-serif;
-            background: #fafafa;
-            color: #222;
+            font-family: Arial, sans-serif;
+            background: #fff7e6;
+            overflow-x: hidden;
         }
 
-        /* HEADER */
+        /* Header */
         header {
-            background: #d62828;
-            padding: 14px 40px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-        header img {
-            height: 58px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
-        }
-        nav a {
-            color: white;
-            margin-left: 24px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-        nav a:hover {
-            opacity: 0.7;
+            align-items: center;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        /* HERO */
+        header img {
+            height: 60px;
+            transition: transform .3s ease;
+        }
+        header img:hover { transform: scale(1.1); }
+
+        /* Hero section */
         .hero {
             position: relative;
             width: 100%;
-            height: 520px;
+            height: 350px;
             overflow: hidden;
         }
         .hero video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.75);
         }
+
         .hero-text {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
+            bottom: 20px;
+            left: 30px;
             color: white;
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.7);
         }
-        .hero-text h1 {
-            font-family: 'Poppins';
-            font-size: 50px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+
+        /* Content */
+        section {
+            padding: 40px 20px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all .9s ease;
         }
-        .hero-text p {
-            font-size: 18px;
-            margin-top: -10px;
-            opacity: 0.9;
+        section.reveal {
+            opacity: 1;
+            transform: translateY(0);
         }
-        .btn {
-            display: inline-block;
-            margin-top: 22px;
-            background: #ffb703;
-            padding: 14px 26px;
+
+        /* WA button */
+        .wa-btn {
+            background: #25D366;
+            color: white;
+            padding: 14px 20px;
             border-radius: 10px;
             text-decoration: none;
-            color: #222;
-            font-weight: bold;
-            transition: 0.2s ease-in-out;
-        }
-        .btn:hover {
-            transform: scale(1.04);
-        }
-        .btn:active {
-            transform: scale(0.96);
-        }
-
-        /* SECTION */
-        .section {
-            padding: 60px 40px;
-            background: white;
-            margin-top: 20px;
-            border-radius: 12px;
-            max-width: 1140px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .section h2 {
-            font-family: 'Poppins';
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: #d62828;
-        }
-
-        .benefits {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .benefit-box {
-            background: #d62828;
-            color: white;
-            flex: 1;
-            padding: 20px;
-            border-radius: 14px;
-            font-weight: bold;
-            text-align: center;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-            transition: 0.3s;
-        }
-        .benefit-box:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-        }
-
-        /* FORM */
-        form {
-            background: #fdf0d5;
-            padding: 28px;
-            border-radius: 14px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-        }
-        form input, form select, form textarea {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 16px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
-        form button {
-            background: #d62828;
-            color: white;
-            border: none;
-            padding: 14px;
-            width: 100%;
-            border-radius: 8px;
             font-size: 18px;
             font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
+            display: inline-block;
+            margin-top: 20px;
+            transition: 0.3s;
         }
-        form button:hover {
-            background: #b81f1f;
+        .wa-btn:hover { transform: scale(1.05); }
+
+        /* Form ordering */
+        .order-box {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+            transition: 0.5s;
+        }
+        .order-box:hover { transform: scale(1.03); }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #ccc;
         }
 
-        footer {
-            margin-top: 20px;
-            background: #d62828;
-            padding: 26px;
-            text-align: center;
+        .submit-btn {
+            background: #ff6b00;
             color: white;
+            padding: 14px;
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+            border: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        .submit-btn:hover { transform: scale(1.05); }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
         }
     </style>
 </head>
+
 <body>
 
-    <!-- HEADER -->
-    <header data-aos="fade-down">
-        <img src="logo-ayamkuu.png.jpeg" alt="Ayamkuu Logo">
-        <nav>
-            <a href="#benefit">Kelebihan</a>
-            <a href="#order">Order</a>
-            <a href="#kontak">Kontak</a>
-        </nav>
+    <!-- Header -->
+    <header>
+        <img src="logo-ayamkuu.png" alt="Ayamkuu Logo" />
+        <a class="wa-btn" href="https://wa.me/6281226816221" target="_blank">
+            Hubungi WhatsApp
+        </a>
     </header>
 
-    <!-- HERO VIDEO -->
-    <section class="hero">
-        <video autoplay muted loop playsinline>
+    <!-- Hero -->
+    <div class="hero">
+        <video autoplay muted loop>
             <source src="ayamkuu-hero-video.mp4" type="video/mp4">
         </video>
+        <div class="hero-text">AYAMKUU — Crispy • Gurih • Bikin Nagih</div>
+    </div>
 
-        <div class="hero-text" data-aos="zoom-in">
-            <h1>AYAMKUU — Fresh, Crunchy, Juicy</h1>
-            <p>Nikmati ayam renyah bumbu khas, dibuat fresh setiap hari.</p>
-            <a class="btn" href="#order">Pesan Sekarang</a>
-        </div>
-    </section>
+    <!-- Section Produk -->
+    <section>
+        <h2>Kenapa Harus AYAMKUU?</h2>
+        <p>Crispy lebih lama, bumbu meresap, rasa premium tapi harga tetap merakyat.</p>
 
-    <!-- BENEFIT -->
-    <section class="section" id="benefit" data-aos="fade-up">
-        <h2>Kelebihan AYAMKUU</h2>
-        <div class="benefits">
-            <div class="benefit-box">🔥 Renyah tahan lama</div>
-            <div class="benefit-box">🍗 Bumbu khas rahasia</div>
-            <div class="benefit-box">💯 Fresh setiap hari</div>
-        </div>
-    </section>
-
-    <!-- FORM PEMESANAN -->
-    <section class="section" id="order" data-aos="fade-up">
-        <h2>Form Pemesanan</h2>
-        <form>
-            <input type="text" placeholder="Nama lengkap" required>
-            <input type="text" placeholder="Nomor WhatsApp" required>
-            <select required>
-                <option value="">Pilih Menu</option>
-                <option>Ayam Kriuk Original</option>
-                <option>Ayam Pedas Gila</option>
-                <option>Ayam Geprek</option>
-            </select>
-            <textarea placeholder="Catatan tambahan"></textarea>
-            <button type="submit">Kirim Pesanan</button>
-        </form>
-    </section>
-    <!-- KONTAK -->
-    <section class="section" id="kontak" data-aos="fade-up">
-        <h2>Kontak</h2>
-        <p style="font-size:18px; line-height:1.6;">
-            Jika kamu ingin bertanya atau melakukan pemesanan cepat, hubungi kami melalui WhatsApp:
-        </p>
-
-        <a 
-            href="https://wa.me/6281234567890" 
-            target="_blank"
-            style="
-                display:inline-block;
-                background:#25D366;
-                color:white;
-                padding:14px 22px;
-                border-radius:10px;
-                font-size:18px;
-                font-weight:bold;
-                text-decoration:none;
-                margin-top:10px;
-                box-shadow:0 3px 6px rgba(0,0,0,0.2);
-            "
-        >
-            💬 Hubungi via WhatsApp
+        <a class="wa-btn" href="https://wa.me/6281226816221" target="_blank">
+            Chat & Pesan Sekarang
         </a>
+    </section>
 
-        <p style="margin-top:18px; font-size:16px; opacity:0.8;">
-            Nomor WA: <strong>+62 812-26816221</strong>
-        </p>
+    <!-- Section Form Pemesanan -->
+    <section>
+        <h2>Form Pemesanan</h2>
+
+        <div class="order-box">
+            <form action="https://wa.me/6281226816221" method="get" target="_blank">
+
+                <input type="text" name="nama" placeholder="Nama Lengkap" required />
+                <input type="text" name="alamat" placeholder="Alamat Lengkap" required />
+
+                <select name="menu">
+                    <option value="Paket Ayam Crispy">Paket Ayam Crispy</option>
+                    <option value="Paket Ayam Geprek">Paket Ayam Geprek</option>
+                    <option value="Paket Sayap">Paket Sayap</option>
+                </select>
+
+                <input type="number" name="jumlah" placeholder="Jumlah Pesanan" required />
+
+                <button class="submit-btn" type="submit">Pesan via WhatsApp</button>
+            </form>
+        </div>
     </section>
 
     <footer>
-        © 2025 AYAMKUU — Fresh & Crunchy
+        AYAMKUU © 2025 — Hubungi: <br>
+        WhatsApp: 0812-2681-6221
     </footer>
 
-    <!-- AOS SCRIPT -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Scroll Reveal Animation -->
     <script>
-        AOS.init({
-            duration: 900,
-            once: true
-        });
+        const sections = document.querySelectorAll("section");
+
+        const revealOnScroll = () => {
+            sections.forEach(sec => {
+                const top = sec.getBoundingClientRect().top;
+                if (top < window.innerHeight - 100) {
+                    sec.classList.add("reveal");
+                }
+            });
+        };
+
+        window.addEventListener("scroll", revealOnScroll);
+        revealOnScroll();
     </script>
 
 </body>
