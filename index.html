@@ -67,6 +67,18 @@
         transform: translateY(0);
     }
 
+    .menu-card {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+        margin-bottom: 15px;
+    }
+
+    .menu-card h3 {
+        margin: 0;
+    }
+
     .form-box {
         background: white;
         padding: 25px;
@@ -77,7 +89,8 @@
     }
 
     .form-box input,
-    .form-box textarea {
+    .form-box textarea,
+    .form-box select {
         width: 100%;
         padding: 12px;
         margin-top: 10px;
@@ -128,12 +141,40 @@
     <div class="hero-text">Rasakan Kelezatan AYAMKUU!</div>
 </section>
 
+<!-- MENU SECTION -->
+<section class="section" id="menu">
+    <h2 style="text-align:center;">Varian Rasa & Harga</h2>
+
+    <div class="menu-card">
+        <h3>🍯 Ayam Manis</h3>
+        <p>Harga: <b>Rp15.000</b></p>
+    </div>
+
+    <div class="menu-card">
+        <h3>🧂 Ayam Gurih</h3>
+        <p>Harga: <b>Rp17.000</b></p>
+    </div>
+
+    <div class="menu-card">
+        <h3>🌶 Ayam Pedas</h3>
+        <p>Harga: <b>Rp18.000</b></p>
+    </div>
+</section>
+
+<!-- FORM PEMESANAN -->
 <section class="section" id="pemesanan">
     <h2 style="text-align:center;">Form Pemesanan</h2>
     <div class="form-box">
         <input type="text" id="nama" placeholder="Nama lengkap">
         <input type="text" id="alamat" placeholder="Alamat lengkap">
-        <input type="text" id="pesanan" placeholder="Pesanan (contoh: Ayam Geprek Level 3)">
+
+        <select id="rasa">
+            <option value="">Pilih Varian Rasa</option>
+            <option value="Ayam Manis (Rp15.000)">Ayam Manis — Rp15.000</option>
+            <option value="Ayam Gurih (Rp17.000)">Ayam Gurih — Rp17.000</option>
+            <option value="Ayam Pedas (Rp18.000)">Ayam Pedas — Rp18.000</option>
+        </select>
+
         <textarea id="catatan" rows="3" placeholder="Catatan tambahan (opsional)"></textarea>
 
         <button class="btn" onclick="kirimWA()">KIRIM PESAN</button>
@@ -156,7 +197,7 @@ window.addEventListener('scroll', () => {
 function kirimWA() {
     let nama = document.getElementById("nama").value;
     let alamat = document.getElementById("alamat").value;
-    let pesanan = document.getElementById("pesanan").value;
+    let rasa = document.getElementById("rasa").value;
     let catatan = document.getElementById("catatan").value;
 
     let nomorWA = "6281226816221"; // Nomor kamu
@@ -166,7 +207,7 @@ function kirimWA() {
 
 Nama: ${nama}
 Alamat: ${alamat}
-Pesanan: ${pesanan}
+Pesanan: ${rasa}
 Catatan: ${catatan}
 
 Terima kasih!`;
