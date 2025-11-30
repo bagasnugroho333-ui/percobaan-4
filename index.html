@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AYAMKUU — Pesan Sekarang</title>
+<title>AYAMKUU — GenZ Edition</title>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
     body {
-        font-family: Arial, sans-serif;
+        font-family: 'Poppins', sans-serif;
         margin: 0;
-        background: #fafafa;
-        perspective: 1000px;
+        background: #f2f2ff;
     }
 
     header {
@@ -18,143 +19,123 @@
         align-items: center;
         padding: 15px 25px;
         background: #ffffff;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         position: sticky;
         top: 0;
         z-index: 999;
-        transform-style: preserve-3d;
-        transition: transform .3s ease;
-    }
-
-    header:hover {
-        transform: rotateX(8deg);
     }
 
     header img {
-        height: 55px;
-        animation: fadeDown 1s ease-in-out;
+        height: 60px;
     }
 
+    /* HERO */
     .hero {
         position: relative;
         width: 100%;
-        height: 350px;
+        height: 380px;
         overflow: hidden;
-        transform-style: preserve-3d;
-    }
-
-    .hero video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: brightness(0.8);
-        transform: translateZ(-50px) scale(1.1);
+        background: linear-gradient(135deg, #ff9f1c, #ffbf69);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+        padding: 20px;
     }
 
     .hero-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) translateZ(60px);
-        color: white;
-        text-align: center;
-        font-size: 32px;
-        font-weight: bold;
-        text-shadow: 0 5px 12px rgba(0,0,0,0.7);
-        animation: floatText 4s ease-in-out infinite;
+        font-size: 36px;
+        font-weight: 700;
+        animation: float 4s ease-in-out infinite;
+        text-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
 
-    @keyframes floatText {
-        0%,100% { transform: translate(-50%, -50%) translateZ(60px); }
-        50% { transform: translate(-50%, -52%) translateZ(80px); }
+    @keyframes float {
+        0%,100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
     }
 
+    /* RASA SECTION */
     .section {
-        padding: 30px;
-        opacity: 0;
-        transform: translateY(40px);
-        transition: 0.8s ease;
+        padding: 40px 20px;
     }
 
-    .section.show {
-        opacity: 1;
-        transform: translateY(0);
+    h2 {
+        text-align: center;
+        font-size: 28px;
+        font-weight: 700;
     }
 
     .rasa-box {
         display: flex;
-        gap: 20px;
         justify-content: center;
+        gap: 20px;
         flex-wrap: wrap;
         margin-top: 20px;
     }
 
     .card-rasa {
         background: white;
-        width: 250px;
-        border-radius: 15px;
+        width: 240px;
+        border-radius: 18px;
         padding: 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         text-align: center;
-        transform-style: preserve-3d;
-        transition: transform .3s ease;
+        transition: 0.3s;
+        cursor: pointer;
     }
 
     .card-rasa:hover {
-        transform: rotateY(12deg) rotateX(6deg) scale(1.03);
+        transform: scale(1.05) rotate(1deg);
     }
 
     .card-rasa img {
         width: 100%;
-        border-radius: 12px;
-        margin-bottom: 10px;
+        border-radius: 15px;
+        height: 150px;
+        object-fit: cover;
     }
 
+    /* FORM */
     .form-box {
         background: white;
-        padding: 25px;
-        border-radius: 15px;
-        box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+        padding: 30px;
+        border-radius: 18px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         max-width: 450px;
         margin: auto;
+        margin-top: 20px;
     }
 
-    .form-box select,
     .form-box input,
+    .form-box select,
     .form-box textarea {
         width: 100%;
-        padding: 12px;
-        margin-top: 10px;
-        border-radius: 10px;
-        border: 1px solid #ccc;
+        padding: 14px;
+        margin-top: 12px;
+        border-radius: 12px;
+        border: 1px solid #bbb;
+        font-size: 14px;
     }
 
     .btn {
         margin-top: 20px;
-        background: #ff6b00;
+        background: #6c5ce7;
         color: white;
-        padding: 12px;
+        padding: 14px;
         border: none;
         width: 100%;
-        border-radius: 12px;
+        border-radius: 14px;
         font-size: 16px;
+        font-weight: 600;
         cursor: pointer;
         transition: 0.3s;
     }
 
     .btn:hover {
-        background: #e85d00;
+        background: #5846d6;
         transform: scale(1.03);
-    }
-
-    @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeDown {
-        from { opacity: 0; transform: translateY(-20px); }
-        to   { opacity: 1; transform: translateY(0); }
     }
 </style>
 </head>
@@ -166,39 +147,39 @@
 </header>
 
 <section class="hero">
-    <video autoplay muted loop>
-        <source src="ayamkuu-hero-video.mp4" type="video/mp4">
-    </video>
-    <div class="hero-text">Rasakan Kelezatan AYAMKUU!</div>
+    <div class="hero-text">Ayam Enak, Harga Pelajar, Mood Langsung Naik 🚀🔥</div>
 </section>
 
 <section class="section" id="rasa">
-    <h2 style="text-align:center;">Varian Rasa AYAMKUU</h2>
+    <h2>Varian Rasa Favorit Anak GenZ 🍗✨</h2>
+    <p style="text-align:center; margin-top: -10px; color:#555;">Pilih vibes kamu hari ini 👇</p>
 
     <div class="rasa-box">
         <div class="card-rasa">
             <img src="rasa-manis.jpg" alt="Rasa Manis">
-            <h3>Manis</h3>
-            <p>Harga: Rp 15.000</p>
+            <h3>Manis 😋</h3>
+            <p>Rp 15.000</p>
         </div>
         <div class="card-rasa">
             <img src="rasa-gurih.jpg" alt="Rasa Gurih">
-            <h3>Gurih</h3>
-            <p>Harga: Rp 17.000</p>
+            <h3>Gurih 🤤</h3>
+            <p>Rp 17.000</p>
         </div>
         <div class="card-rasa">
             <img src="rasa-pedes.jpg" alt="Rasa Pedas">
-            <h3>Pedas</h3>
-            <p>Harga: Rp 18.000</p>
+            <h3>Pedas 🌶🔥</h3>
+            <p>Rp 18.000</p>
         </div>
     </div>
 </section>
 
 <section class="section" id="pemesanan">
-    <h2 style="text-align:center;">Form Pemesanan</h2>
+    <h2>Gaskeun Pesan! 📦🔥</h2>
+    <p style="text-align:center; margin-top: -10px; color:#555;">Isi bentar, makan enak selamanya 😎</p>
+
     <div class="form-box">
-        <input type="text" id="nama" placeholder="Nama lengkap">
-        <input type="text" id="alamat" placeholder="Alamat lengkap">
+        <input type="text" id="nama" placeholder="Nama kamu (biar gampang)">
+        <input type="text" id="alamat" placeholder="Alamat lengkap (biar kurir nggak nyasar)">
 
         <select id="varian">
             <option value="Manis - 15000">Manis — Rp 15.000</option>
@@ -206,45 +187,32 @@
             <option value="Pedas - 18000">Pedas — Rp 18.000</option>
         </select>
 
-        <textarea id="catatan" rows="3" placeholder="Catatan tambahan (opsional)"></textarea>
+        <textarea id="catatan" rows="3" placeholder="Catatan (level pedes? request ekstra?)"></textarea>
 
-        <button class="btn" onclick="kirimWA()">KIRIM PESAN</button>
+        <button class="btn" onclick="kirimWA()">KIRIM PESAN 📩🔥</button>
     </div>
 </section>
 
 <script>
-// SCROLL REVEAL
-const sections = document.querySelectorAll('.section');
-window.addEventListener('scroll', () => {
-    sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-            sec.classList.add('show');
-        }
-    });
-});
-
-// WHATSAPP AUTO-FILL
 function kirimWA() {
     let nama = document.getElementById("nama").value;
     let alamat = document.getElementById("alamat").value;
     let varian = document.getElementById("varian").value;
     let catatan = document.getElementById("catatan").value;
 
-    let nomorWA = "6281226816221"; // Nomor kamu
+    let nomorWA = "6281226816221";
 
     let pesan = 
-`Halo, saya ingin pesan AYAMKUU:
+`Halo Kak AYAMKUU! Aku mau order nih 🍗🔥
 
 Nama: ${nama}
 Alamat: ${alamat}
 Varian: ${varian}
-Catatan: ${catatan}
+Catatan tambahan: ${catatan}
 
-Terima kasih!`;
+Gas kirim yaa! 😎`;
 
     let url = "https://wa.me/" + nomorWA + "?text=" + encodeURIComponent(pesan);
-
     window.open(url, "_blank");
 }
 </script>
