@@ -3,546 +3,78 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AYAMKUU — Your Comfort Food Spot</title>
+<title>AYAMKUU — Pesan Sekarang</title>
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
     body {
-        font-family: 'Arial', 'Helvetica', sans-serif;
-        background: #1a1a1a;
-        color: #e0e0e0;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f2f2f2;
         perspective: 1000px;
-    }
-
-    /* Concrete Texture Overlay */
-    body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: 
-            repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 2px,
-                rgba(255,255,255,0.03) 2px,
-                rgba(255,255,255,0.03) 4px
-            );
-        pointer-events: none;
-        z-index: 1;
+        color: #2b2b2b;
     }
 
     header {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        padding: 20px 40px;
-        background: rgba(42, 42, 42, 0.95);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        padding: 15px 25px;
+        background: #1f1f1f;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         position: sticky;
         top: 0;
         z-index: 999;
-        border-bottom: 2px solid #c44536;
         transform-style: preserve-3d;
-        transition: transform 0.3s ease;
+        transition: transform .3s ease;
     }
 
     header:hover {
-        transform: translateZ(10px);
-    }
-
-    .logo-container {
-        display: flex;
-        align-items: center;
-        gap: 15px;
+        transform: rotateX(8deg);
     }
 
     header img {
-        height: 50px;
-        filter: drop-shadow(0 2px 8px rgba(196, 69, 54, 0.3));
+        height: 55px;
         animation: fadeDown 1s ease-in-out;
-    }
-
-    .brand-text {
-        font-size: 24px;
-        font-weight: 900;
-        color: #c44536;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-    }
-
-    .header-tagline {
-        font-size: 13px;
-        color: #999;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        border: 1px solid #555;
-        padding: 8px 16px;
-        border-radius: 4px;
-        transition: all 0.3s ease;
-    }
-
-    .header-tagline:hover {
-        border-color: #c44536;
-        color: #c44536;
     }
 
     .hero {
         position: relative;
         width: 100%;
-        height: 500px;
+        height: 350px;
         overflow: hidden;
         transform-style: preserve-3d;
-    }
-
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(180deg, 
-            rgba(0,0,0,0.3) 0%, 
-            rgba(26,26,26,0.8) 100%
-        );
-        z-index: 2;
     }
 
     .hero video {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: brightness(0.7) contrast(1.1);
-        transform: translateZ(-50px) scale(1.05);
+        filter: brightness(0.8);
+        transform: translateZ(-50px) scale(1.1);
     }
 
-    .hero-content {
+    .hero-text {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) translateZ(60px);
-        text-align: center;
-        z-index: 3;
-        transform-style: preserve-3d;
-    }
-
-    .hero-text-main {
-        font-size: 72px;
-        font-weight: 900;
-        color: #fff;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        text-shadow: 
-            0 2px 0 #c44536,
-            0 4px 0 #a03028,
-            0 6px 10px rgba(0,0,0,0.8);
-        animation: heroSlide 1.2s ease-out;
-        margin-bottom: 15px;
-    }
-
-    .hero-subtext {
-        font-size: 20px;
-        color: #e0e0e0;
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        font-weight: 300;
-        animation: heroFade 1.5s ease-out 0.3s backwards;
-        border-top: 1px solid rgba(196, 69, 54, 0.5);
-        border-bottom: 1px solid rgba(196, 69, 54, 0.5);
-        padding: 12px 0;
-        display: inline-block;
-    }
-
-    @keyframes heroSlide {
-        from { 
-            transform: translateY(-50px) translateZ(60px); 
-            opacity: 0; 
-        }
-        to { 
-            transform: translateY(0) translateZ(60px); 
-            opacity: 1; 
-        }
-    }
-
-    @keyframes heroFade {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-
-    .section {
-        padding: 80px 40px;
-        max-width: 1200px;
-        margin: auto;
-        position: relative;
-        z-index: 2;
-    }
-
-    .section-header {
-        text-align: center;
-        margin-bottom: 60px;
-    }
-
-    .section-title {
-        font-size: 48px;
-        font-weight: 900;
-        color: #fff;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-bottom: 15px;
-        position: relative;
-        display: inline-block;
-    }
-
-    .section-title::after {
-        content: '';
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 3px;
-        background: #c44536;
-    }
-
-    .section-subtitle {
-        font-size: 16px;
-        color: #999;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        margin-top: 20px;
-    }
-
-    .menu-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 40px;
-        perspective: 1000px;
-    }
-
-    .menu-card {
-        background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 
-            0 10px 30px rgba(0,0,0,0.5),
-            inset 0 1px 0 rgba(255,255,255,0.1);
-        transform-style: preserve-3d;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        position: relative;
-        border: 1px solid rgba(196, 69, 54, 0.2);
-    }
-
-    .menu-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, 
-            rgba(196, 69, 54, 0.1) 0%, 
-            transparent 50%
-        );
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .menu-card:hover {
-        transform: translateY(-15px) rotateX(5deg) rotateY(5deg) scale(1.02);
-        box-shadow: 
-            0 20px 50px rgba(0,0,0,0.7),
-            0 0 0 2px #c44536;
-    }
-
-    .menu-card:hover::before {
-        opacity: 1;
-    }
-
-    .menu-card-badge {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background: #c44536;
         color: white;
-        padding: 6px 14px;
-        font-size: 11px;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        border-radius: 3px;
-        z-index: 10;
-        box-shadow: 0 3px 10px rgba(196, 69, 54, 0.5);
-    }
-
-    .menu-card-media {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-    }
-
-    .menu-card:hover .menu-card-media {
-        transform: scale(1.08);
-    }
-
-    .menu-card-content {
-        padding: 25px;
-        background: rgba(42, 42, 42, 0.8);
-        backdrop-filter: blur(5px);
-    }
-
-    .menu-card-title {
-        font-size: 28px;
-        font-weight: 900;
-        color: #fff;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 8px;
-    }
-
-    .menu-card-desc {
-        font-size: 14px;
-        color: #999;
-        margin-bottom: 15px;
-        line-height: 1.6;
-    }
-
-    .menu-card-price-wrap {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 15px;
-        padding-top: 15px;
-        border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .menu-card-price {
-        font-size: 26px;
-        font-weight: 900;
-        color: #c44536;
-    }
-
-    .price-old {
-        font-size: 16px;
-        color: #666;
-        text-decoration: line-through;
-        margin-right: 10px;
-    }
-
-    .price-tag {
-        background: rgba(196, 69, 54, 0.2);
-        color: #c44536;
-        padding: 5px 12px;
-        border-radius: 3px;
-        font-size: 12px;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    .order-section {
-        background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
-        padding: 50px;
-        border-radius: 8px;
-        max-width: 600px;
-        margin: 60px auto;
-        box-shadow: 
-            0 15px 40px rgba(0,0,0,0.6),
-            inset 0 1px 0 rgba(255,255,255,0.1);
-        border: 1px solid rgba(196, 69, 54, 0.3);
-        transform-style: preserve-3d;
-        transition: transform 0.3s ease;
-    }
-
-    .order-section:hover {
-        transform: translateZ(15px);
-    }
-
-    .order-title {
-        font-size: 36px;
-        font-weight: 900;
-        color: #fff;
-        text-transform: uppercase;
         text-align: center;
-        margin-bottom: 12px;
-        letter-spacing: 2px;
-    }
-
-    .order-subtitle {
-        text-align: center;
-        color: #999;
-        font-size: 14px;
-        margin-bottom: 35px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
-
-    .form-group {
-        margin-bottom: 20px;
-    }
-
-    .form-label {
-        display: block;
-        font-size: 12px;
-        color: #999;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-bottom: 8px;
-    }
-
-    .form-control {
-        width: 100%;
-        padding: 15px 18px;
-        background: rgba(0,0,0,0.3);
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 4px;
-        color: #fff;
-        font-size: 15px;
-        transition: all 0.3s ease;
-        font-family: Arial, sans-serif;
-    }
-
-    .form-control:focus {
-        outline: none;
-        border-color: #c44536;
-        background: rgba(0,0,0,0.5);
-        box-shadow: 0 0 0 3px rgba(196, 69, 54, 0.1);
-        transform: translateY(-2px);
-    }
-
-    .form-control::placeholder {
-        color: #666;
-    }
-
-    select.form-control {
-        cursor: pointer;
-        appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c44536' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 15px center;
-        padding-right: 40px;
-    }
-
-    .btn-order {
-        width: 100%;
-        padding: 18px;
-        background: linear-gradient(135deg, #c44536, #a03028);
-        color: white;
-        border: none;
-        border-radius: 4px;
-        font-size: 16px;
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        cursor: pointer;
-        margin-top: 25px;
-        position: relative;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 20px rgba(196, 69, 54, 0.4);
-    }
-
-    .btn-order::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, 
-            transparent, 
-            rgba(255,255,255,0.2), 
-            transparent
-        );
-        transition: left 0.5s ease;
-    }
-
-    .btn-order:hover::before {
-        left: 100%;
-    }
-
-    .btn-order:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(196, 69, 54, 0.6);
-    }
-
-    .btn-order:active {
-        transform: translateY(-1px);
-    }
-
-    footer {
-        background: #1a1a1a;
-        padding: 50px 40px;
-        text-align: center;
-        border-top: 2px solid #2a2a2a;
-        margin-top: 80px;
-    }
-
-    .footer-brand {
         font-size: 32px;
-        font-weight: 900;
-        color: #c44536;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-bottom: 10px;
+        font-weight: bold;
+        text-shadow: 0 5px 12px rgba(0,0,0,0.7);
+        animation: floatText 4s ease-in-out infinite;
     }
 
-    .footer-tagline {
-        color: #666;
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        margin-bottom: 30px;
+    @keyframes floatText {
+        0%,100% { transform: translate(-50%, -50%) translateZ(60px); }
+        50% { transform: translate(-50%, -52%) translateZ(80px); }
     }
 
-    .footer-social {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        font-size: 14px;
-        color: #999;
-        margin-top: 30px;
-    }
-
-    .footer-social span {
-        cursor: pointer;
-        transition: color 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
-
-    .footer-social span:hover {
-        color: #c44536;
-    }
-
-    .footer-copyright {
-        margin-top: 30px;
-        padding-top: 20px;
-        border-top: 1px solid #2a2a2a;
-        color: #555;
-        font-size: 12px;
-        letter-spacing: 2px;
-    }
-
-    @keyframes fadeDown {
-        from { opacity: 0; transform: translateY(-20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Scroll reveal */
     .section {
+        padding: 30px;
         opacity: 0;
-        transform: translateY(50px);
-        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transform: translateY(40px);
+        transition: 0.8s ease;
     }
 
     .section.show {
@@ -550,39 +82,81 @@
         transform: translateY(0);
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-        header {
-            padding: 15px 20px;
-        }
+    .rasa-box {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
 
-        .header-tagline {
-            display: none;
-        }
+    .card-rasa {
+        background: #ffffff;
+        width: 250px;
+        border-radius: 15px;
+        padding: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        text-align: center;
+        border: 1px solid #d6d6d6;
+        transform-style: preserve-3d;
+        transition: transform .3s ease;
+    }
 
-        .hero-text-main {
-            font-size: 48px;
-        }
+    .card-rasa:hover {
+        transform: rotateY(12deg) rotateX(6deg) scale(1.03);
+    }
 
-        .hero-subtext {
-            font-size: 14px;
-        }
+    .card-rasa img {
+        width: 100%;
+        border-radius: 12px;
+        margin-bottom: 10px;
+    }
 
-        .section {
-            padding: 50px 20px;
-        }
+    .form-box {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+        max-width: 450px;
+        margin: auto;
+    }
 
-        .section-title {
-            font-size: 36px;
-        }
+    .form-box select,
+    .form-box input,
+    .form-box textarea {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+    }
 
-        .menu-grid {
-            grid-template-columns: 1fr;
-        }
+    .btn {
+        margin-top: 20px;
+        background: #c83224;
+        color: white;
+        padding: 12px;
+        border: none;
+        width: 100%;
+        border-radius: 12px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
 
-        .order-section {
-            padding: 30px 25px;
-        }
+    .btn:hover {
+        background: #e85d00;
+        transform: scale(1.03);
+    }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to   { opacity: 1; transform: translateY(0); }
     }
 </style>
 </head>
@@ -590,143 +164,58 @@
 <body>
 
 <header>
-    <div class="logo-container">
-        <img src="https://via.placeholder.com/150x50/c44536/ffffff?text=AYAMKUU" alt="Ayamkuu Logo">
-    </div>
-    <div class="header-tagline">Premium Street Food</div>
+    <img src="logo-ayamkuu.png" alt="Ayamkuu Logo">
 </header>
 
 <section class="hero">
-    <video autoplay muted loop playsinline>
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-close-up-to-a-barbecue-1165-large.mp4" type="video/mp4">
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-chicken-cooking-on-charcoal-grill-43040-large.mp4" type="video/mp4">
+    <video autoplay muted loop>
+        <source src="ayamkuu-hero-video.mp4" type="video/mp4">
     </video>
-    <div class="hero-content">
-        <div class="hero-text-main">AYAMKUU</div>
-        <div class="hero-subtext">Your Comfort Food Spot</div>
+    <div class="hero-text">Rasakan Kelezatan AYAMKUU!</div>
+</section>
+
+<section class="section" id="rasa">
+    <h2 style="text-align:center;">Varian Rasa AYAMKUU</h2>
+
+    <div class="rasa-box">
+        <div class="card-rasa">
+            <img src="rasa-manis.jpg" alt="Rasa Manis">
+            <h3>Manis</h3>
+            <p>Harga: Rp 15.000</p>
+        </div>
+        <div class="card-rasa">
+            <img src="rasa-gurih.jpg" alt="Rasa Gurih">
+            <h3>Gurih</h3>
+            <p>Harga: Rp 17.000</p>
+        </div>
+        <div class="card-rasa">
+            <img src="rasa-pedes.jpg" alt="Rasa Pedas">
+            <h3>Pedas</h3>
+            <p>Harga: Rp 18.000</p>
+        </div>
     </div>
 </section>
 
-<section class="section" id="menu">
-    <div class="section-header">
-        <h2 class="section-title">Our Signature Menu</h2>
-        <p class="section-subtitle">Crafted with passion, served with pride</p>
-    </div>
+<section class="section" id="pemesanan">
+    <h2 style="text-align:center;">Form Pemesanan</h2>
+    <div class="form-box">
+        <input type="text" id="nama" placeholder="Nama lengkap">
+        <input type="text" id="alamat" placeholder="Alamat lengkap">
 
-    <div class="menu-grid">
-        
-        <div class="menu-card">
-            <div class="menu-card-badge">Best Seller</div>
-            <video autoplay muted loop playsinline class="menu-card-media">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-fried-chicken-wings-in-bbq-sauce-26500-large.mp4" type="video/mp4">
-            </video>
-            <div class="menu-card-content">
-                <h3 class="menu-card-title">Sweet Glazed</h3>
-                <p class="menu-card-desc">Tender chicken with our signature sweet glaze, perfectly balanced sweetness</p>
-                <div class="menu-card-price-wrap">
-                    <div>
-                        <span class="price-old">Rp 20.000</span>
-                        <span class="menu-card-price">Rp 15.000</span>
-                    </div>
-                    <span class="price-tag">Save 5K</span>
-                </div>
-            </div>
-        </div>
+        <select id="varian">
+            <option value="Manis - 15000">Manis — Rp 15.000</option>
+            <option value="Gurih - 17000">Gurih — Rp 17.000</option>
+            <option value="Pedas - 18000">Pedas — Rp 18.000</option>
+        </select>
 
-        <div class="menu-card">
-            <div class="menu-card-badge">Popular</div>
-            <video autoplay muted loop playsinline class="menu-card-media">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-chicken-cooking-on-charcoal-grill-43040-large.mp4" type="video/mp4">
-            </video>
-            <div class="menu-card-content">
-                <h3 class="menu-card-title">Original Crispy</h3>
-                <p class="menu-card-desc">Classic savory flavor with golden crispy coating, never gets old</p>
-                <div class="menu-card-price-wrap">
-                    <div>
-                        <span class="price-old">Rp 22.000</span>
-                        <span class="menu-card-price">Rp 17.000</span>
-                    </div>
-                    <span class="price-tag">Save 5K</span>
-                </div>
-            </div>
-        </div>
+        <textarea id="catatan" rows="3" placeholder="Catatan tambahan (opsional)"></textarea>
 
-        <div class="menu-card">
-            <div class="menu-card-badge">Spicy</div>
-            <video autoplay muted loop playsinline class="menu-card-media">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-grilled-chicken-on-a-rotating-grill-43039-large.mp4" type="video/mp4">
-            </video>
-            <div class="menu-card-content">
-                <h3 class="menu-card-title">Hot & Spicy</h3>
-                <p class="menu-card-desc">For the brave souls, loaded with fiery spices and heat</p>
-                <div class="menu-card-price-wrap">
-                    <div>
-                        <span class="price-old">Rp 23.000</span>
-                        <span class="menu-card-price">Rp 18.000</span>
-                    </div>
-                    <span class="price-tag">Save 5K</span>
-                </div>
-            </div>
-        </div>
-
+        <button class="btn" onclick="kirimWA()">KIRIM PESAN</button>
     </div>
 </section>
-
-<section class="section" id="order">
-    <div class="order-section">
-        <h2 class="order-title">Place Your Order</h2>
-        <p class="order-subtitle">Fast & Easy via WhatsApp</p>
-
-        <form>
-            <div class="form-group">
-                <label class="form-label">Full Name</label>
-                <input type="text" id="nama" class="form-control" placeholder="Enter your name">
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">Delivery Address</label>
-                <input type="text" id="alamat" class="form-control" placeholder="Your complete address">
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">Select Variant</label>
-                <select id="rasa" class="form-control">
-                    <option value="">Choose your flavor</option>
-                    <option value="Sweet Glazed — Rp 15.000">Sweet Glazed — Rp 15.000</option>
-                    <option value="Original Crispy — Rp 17.000">Original Crispy — Rp 17.000</option>
-                    <option value="Hot & Spicy — Rp 18.000">Hot & Spicy — Rp 18.000</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">Special Request (Optional)</label>
-                <textarea id="catatan" rows="3" class="form-control" placeholder="Any special requests?"></textarea>
-            </div>
-
-            <button type="button" class="btn-order" onclick="kirimWA()">
-                Send Order via WhatsApp
-            </button>
-        </form>
-    </div>
-</section>
-
-<footer>
-    <div class="footer-brand">AYAMKUU</div>
-    <div class="footer-tagline">Premium Street Food Experience</div>
-    <div class="footer-social">
-        <span>Instagram</span>
-        <span>•</span>
-        <span>WhatsApp</span>
-        <span>•</span>
-        <span>TikTok</span>
-    </div>
-    <div class="footer-copyright">
-        © 2024 AYAMKUU. All Rights Reserved.
-    </div>
-</footer>
 
 <script>
-// Scroll Reveal
+// SCROLL REVEAL
 const sections = document.querySelectorAll('.section');
 window.addEventListener('scroll', () => {
     sections.forEach(sec => {
@@ -737,55 +226,27 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// 3D Tilt Effect on Cards
-const menuCards = document.querySelectorAll('.menu-card');
-
-menuCards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
-        
-        card.style.transform = `translateY(-15px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(0) rotateX(0) rotateY(0) scale(1)';
-    });
-});
-
-// WhatsApp Function
+// WHATSAPP AUTO-FILL
 function kirimWA() {
-    let nama = document.getElementById("nama").value.trim();
-    let alamat = document.getElementById("alamat").value.trim();
-    let rasa = document.getElementById("rasa").value;
-    let catatan = document.getElementById("catatan").value.trim();
+    let nama = document.getElementById("nama").value;
+    let alamat = document.getElementById("alamat").value;
+    let varian = document.getElementById("varian").value;
+    let catatan = document.getElementById("catatan").value;
 
-    if (!nama || !alamat || !rasa) {
-        alert('Please complete all required fields!');
-        return;
-    }
-
-    let nomorWA = "6281226816221";
+    let nomorWA = "6281226816221"; // Nomor kamu
 
     let pesan = 
-`Hello! I'd like to order from AYAMKUU:
+`Halo, saya ingin pesan AYAMKUU:
 
-📋 *ORDER DETAILS:*
-Name: ${nama}
-Address: ${alamat}
-Variant: ${rasa}
-${catatan ? `Notes: ${catatan}` : ''}
+Nama: ${nama}
+Alamat: ${alamat}
+Varian: ${varian}
+Catatan: ${catatan}
 
-Thank you!`;
+Terima kasih!`;
 
     let url = "https://wa.me/" + nomorWA + "?text=" + encodeURIComponent(pesan);
+
     window.open(url, "_blank");
 }
 </script>
