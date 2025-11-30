@@ -4,165 +4,199 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>AYAMKUU — Pesan Sekarang</title>
-
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        background: #fafafa;
-        perspective: 1000px;
-    }
+/* ===== RESET & BODY ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background: #fafafa;
+    scroll-behavior: smooth;
+}
 
-    header {
-        display: flex;
-        align-items: center;
-        padding: 15px 25px;
-        background: #ffffff;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        position: sticky;
-        top: 0;
-        z-index: 999;
-        transform-style: preserve-3d;
-        transition: transform .3s ease;
-    }
+/* ===== HEADER ===== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+}
 
-    header:hover {
-        transform: rotateX(8deg);
-    }
+header nav {
+    display: flex;
+    gap: 25px;
+}
 
-    header img {
-        height: 55px;
-        animation: fadeDown 1s ease-in-out;
-    }
+header nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    transition: 0.3s;
+}
 
-    .hero {
-        position: relative;
-        width: 100%;
-        height: 350px;
-        overflow: hidden;
-        transform-style: preserve-3d;
-    }
+header nav a:hover {
+    color: #ff6b00;
+}
 
-    .hero video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: brightness(0.8);
-        transform: translateZ(-50px) scale(1.1);
-    }
+/* Logo tengah */
+header .logo {
+    height: 60px;
+}
 
-    .hero-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) translateZ(60px);
-        color: white;
-        text-align: center;
-        font-size: 32px;
-        font-weight: bold;
-        text-shadow: 0 5px 12px rgba(0,0,0,0.7);
-        animation: floatText 4s ease-in-out infinite;
-    }
+/* ===== HERO ===== */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
 
-    @keyframes floatText {
-        0%,100% { transform: translate(-50%, -50%) translateZ(60px); }
-        50% { transform: translate(-50%, -52%) translateZ(80px); }
-    }
+.hero video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.75);
+}
 
-    .section {
-        padding: 30px;
-        opacity: 0;
-        transform: translateY(40px);
-        transition: 0.8s ease;
-    }
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.7);
+}
 
-    .section.show {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* ===== SECTION ===== */
+.section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: auto;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s ease;
+}
 
-    .rasa-box {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 20px;
-    }
+.section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-    .card-rasa {
-        background: white;
-        width: 250px;
-        border-radius: 15px;
-        padding: 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        text-align: center;
-        transform-style: preserve-3d;
-        transition: transform .3s ease;
-    }
+/* ===== ABOUT ME ===== */
+.about-me {
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+}
 
-    .card-rasa:hover {
-        transform: rotateY(12deg) rotateX(6deg) scale(1.03);
-    }
+/* ===== VARIAN RASA ===== */
+.rasa-box {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
 
-    .card-rasa img {
-        width: 100%;
-        border-radius: 12px;
-        margin-bottom: 10px;
-    }
+.card-rasa {
+    background: #fff;
+    width: 250px;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
 
-    .form-box {
-        background: white;
-        padding: 25px;
-        border-radius: 15px;
-        box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-        max-width: 450px;
-        margin: auto;
-    }
+.card-rasa:hover {
+    transform: scale(1.05) rotateY(5deg);
+}
 
-    .form-box select,
-    .form-box input,
-    .form-box textarea {
-        width: 100%;
-        padding: 12px;
-        margin-top: 10px;
-        border-radius: 10px;
-        border: 1px solid #ccc;
-    }
+.card-rasa img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
 
-    .btn {
-        margin-top: 20px;
-        background: #ff6b00;
-        color: white;
-        padding: 12px;
-        border: none;
-        width: 100%;
-        border-radius: 12px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
+/* ===== FORM PEMESANAN ===== */
+.form-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: auto;
+}
 
-    .btn:hover {
-        background: #e85d00;
-        transform: scale(1.03);
-    }
+.form-box input, .form-box select, .form-box textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
 
-    @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to   { opacity: 1; transform: translateY(0); }
-    }
+.btn {
+    margin-top: 20px;
+    background: #ff6b00;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    width: 100%;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-    @keyframes fadeDown {
-        from { opacity: 0; transform: translateY(-20px); }
-        to   { opacity: 1; transform: translateY(0); }
-    }
+.btn:hover {
+    background: #e85d00;
+    transform: scale(1.03);
+}
+
+/* ===== CONTACT INFO ===== */
+.contact-info {
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.contact-info a {
+    color: #ff6b00;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
 </style>
 </head>
-
 <body>
 
 <header>
-    <img src="logo-ayamkuu.png" alt="Ayamkuu Logo">
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#rasa">Varian Rasa</a>
+    </nav>
+    <img src="logo-ayamkuu.png" alt="Ayamkuu Logo" class="logo">
+    <nav>
+        <a href="#pemesanan">Form Pesan</a>
+        <a href="#contact">Kontak</a>
+    </nav>
 </header>
 
 <section class="hero">
@@ -172,69 +206,76 @@
     <div class="hero-text">Rasakan Kelezatan AYAMKUU!</div>
 </section>
 
-<section class="section" id="rasa">
-    <h2 style="text-align:center;">Varian Rasa AYAMKUU</h2>
+<section id="about" class="section about-me">
+    <h2>About Me</h2>
+    <p>AYAMKUU menghadirkan ayam goreng dengan cita rasa unik: Manis, Gurih, Pedas. Semua bahan segar, bumbu racikan khas, dijamin memanjakan lidah setiap gigitan!</p>
+</section>
 
+<section id="rasa" class="section">
+    <h2 style="text-align:center;">Varian Rasa AYAMKUU</h2>
     <div class="rasa-box">
         <div class="card-rasa">
-            <img src="rasa-manis.jpg" alt="Rasa Manis">
+            <img src="rasa-manis.jpg" alt="Manis">
             <h3>Manis</h3>
-            <p>Harga: Rp 15.000</p>
+            <p>Rp 15.000</p>
         </div>
         <div class="card-rasa">
-            <img src="rasa-gurih.jpg" alt="Rasa Gurih">
+            <img src="rasa-gurih.jpg" alt="Gurih">
             <h3>Gurih</h3>
-            <p>Harga: Rp 17.000</p>
+            <p>Rp 17.000</p>
         </div>
         <div class="card-rasa">
-            <img src="rasa-pedes.jpg" alt="Rasa Pedas">
+            <img src="rasa-pedes.jpg" alt="Pedas">
             <h3>Pedas</h3>
-            <p>Harga: Rp 18.000</p>
+            <p>Rp 18.000</p>
         </div>
     </div>
 </section>
 
-<section class="section" id="pemesanan">
+<section id="pemesanan" class="section">
     <h2 style="text-align:center;">Form Pemesanan</h2>
     <div class="form-box">
         <input type="text" id="nama" placeholder="Nama lengkap">
         <input type="text" id="alamat" placeholder="Alamat lengkap">
-
         <select id="varian">
             <option value="Manis - 15000">Manis — Rp 15.000</option>
             <option value="Gurih - 17000">Gurih — Rp 17.000</option>
             <option value="Pedas - 18000">Pedas — Rp 18.000</option>
         </select>
-
         <textarea id="catatan" rows="3" placeholder="Catatan tambahan (opsional)"></textarea>
-
         <button class="btn" onclick="kirimWA()">KIRIM PESAN</button>
     </div>
 </section>
 
+<section id="contact" class="section contact-info">
+    <h2>Kontak Kami</h2>
+    <p>WhatsApp: <a href="https://wa.me/6281226816221" target="_blank">0821-2268-16221</a></p>
+    <p>Instagram: <a href="https://instagram.com/ayamkuu" target="_blank">@ayamkuu</a></p>
+    <p>X/Twitter: <a href="https://x.com/ayamkuu" target="_blank">@ayamkuu</a></p>
+    <p>Telepon: 0821-2268-16221</p>
+</section>
+
 <script>
-// SCROLL REVEAL
+// Scroll reveal effect
 const sections = document.querySelectorAll('.section');
 window.addEventListener('scroll', () => {
     sections.forEach(sec => {
         const top = sec.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
+        if(top < window.innerHeight - 100) {
             sec.classList.add('show');
         }
     });
 });
 
-// WHATSAPP AUTO-FILL
-function kirimWA() {
+// WhatsApp auto-fill
+function kirimWA(){
     let nama = document.getElementById("nama").value;
     let alamat = document.getElementById("alamat").value;
     let varian = document.getElementById("varian").value;
     let catatan = document.getElementById("catatan").value;
+    let nomorWA = "6281226816221";
 
-    let nomorWA = "6281226816221"; // Nomor kamu
-
-    let pesan = 
-`Halo, saya ingin pesan AYAMKUU:
+    let pesan = `Halo, saya ingin pesan AYAMKUU:
 
 Nama: ${nama}
 Alamat: ${alamat}
@@ -244,8 +285,7 @@ Catatan: ${catatan}
 Terima kasih!`;
 
     let url = "https://wa.me/" + nomorWA + "?text=" + encodeURIComponent(pesan);
-
-    window.open(url, "_blank");
+    window.open(url,"_blank");
 }
 </script>
 
