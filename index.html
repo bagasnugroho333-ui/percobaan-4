@@ -1,212 +1,253 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AYAMKUU — Landing Page Premium</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AYAMKUU — Pesan Sekarang</title>
 
 <style>
-/* ==================== GLOBAL ==================== */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0a0a0a;
-    color: white;
-}
-
-/* ==================== NAVIGATION ==================== */
-nav.menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #0d0d0d;
-    padding: 25px 0;
-    gap: 0;
-}
-
-nav.menu > * {
-    flex: 1;
-    text-align: center;
-}
-
-nav.menu a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-nav.menu a:hover {
-    color: #f05454;
-}
-
-.logo-wrap img {
-    width: 80px;
-    height: auto;
-    border-radius: 50%;
-    transition: 0.3s ease;
-}
-
-.logo-wrap img:hover {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 12px rgba(255,255,255,0.5));
-}
-
-/* ==================== SECTION WRAPPER ==================== */
-.section-box {
-    width: 80%;
-    margin: 80px auto;
-    background: rgba(255,255,255,0.05);
-    padding: 40px;
-    border-radius: 35px;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 0 20px rgba(255,255,255,0.08);
-}
-
-/* ==================== SECTION TITLE ==================== */
-.section-title {
-    text-align: center;
-    font-size: 32px;
-    margin-bottom: 20px;
-    font-weight: 700;
-}
-
-/* ==================== VARIAN RASA CARD ==================== */
-.varian-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-}
-
-.varian-card {
-    background: rgba(255,255,255,0.08);
-    width: 250px;
-    padding: 25px;
-    border-radius: 25px;
-    text-align: center;
-    transition: 0.4s ease;
-    box-shadow: 0 0 15px rgba(255,255,255,0.06);
-}
-
-.varian-card:hover {
-    transform: translateY(-12px) scale(1.05);
-    box-shadow: 0 10px 35px rgba(255,255,255,0.15);
-}
-
-/* ==================== FORM PESAN ==================== */
-.form-box {
-    background: #d62828;
-    padding: 40px;
-    border-radius: 30px;
-    box-shadow: 0 0 25px rgba(214,40,40,0.4);
-    transition: 0.3s;
-}
-
-.form-box:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 0 35px rgba(214,40,40,0.6);
-}
-
-form input, form textarea {
-    width: 100%;
-    padding: 14px;
-    margin-top: 12px;
-    border-radius: 12px;
-    border: none;
-}
-
-form button {
-    margin-top: 15px;
-    padding: 14px;
-    width: 100%;
-    background: #000;
-    color: white;
-    border-radius: 12px;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-form button:hover {
-    background: #222;
-}
-
-/* ==================== RESPONSIVE ==================== */
-@media (max-width: 768px) {
-    nav.menu {
-        flex-wrap: wrap;
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #fafafa;
+        perspective: 1000px;
     }
-    nav.menu > * {
-        flex: unset;
-        width: 50%;
-        padding-bottom: 10px;
+
+    header {
+        display: flex;
+        align-items: center;
+        padding: 15px 25px;
+        background: #ffffff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        transform-style: preserve-3d;
+        transition: transform .3s ease;
     }
-    .logo-wrap {
+
+    header:hover {
+        transform: rotateX(8deg);
+    }
+
+    header img {
+        height: 55px;
+        animation: fadeDown 1s ease-in-out;
+    }
+
+    .hero {
+        position: relative;
         width: 100%;
-        margin-top: 10px;
+        height: 350px;
+        overflow: hidden;
+        transform-style: preserve-3d;
     }
-}
+
+    .hero video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.8);
+        transform: translateZ(-50px) scale(1.1);
+    }
+
+    .hero-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) translateZ(60px);
+        color: white;
+        text-align: center;
+        font-size: 32px;
+        font-weight: bold;
+        text-shadow: 0 5px 12px rgba(0,0,0,0.7);
+        animation: floatText 4s ease-in-out infinite;
+    }
+
+    @keyframes floatText {
+        0%,100% { transform: translate(-50%, -50%) translateZ(60px); }
+        50% { transform: translate(-50%, -52%) translateZ(80px); }
+    }
+
+    .section {
+        padding: 30px;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: 0.8s ease;
+    }
+
+    .section.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .rasa-box {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    .card-rasa {
+        background: white;
+        width: 250px;
+        border-radius: 15px;
+        padding: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        text-align: center;
+        transform-style: preserve-3d;
+        transition: transform .3s ease;
+    }
+
+    .card-rasa:hover {
+        transform: rotateY(12deg) rotateX(6deg) scale(1.03);
+    }
+
+    .card-rasa img {
+        width: 100%;
+        border-radius: 12px;
+        margin-bottom: 10px;
+    }
+
+    .form-box {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+        max-width: 450px;
+        margin: auto;
+    }
+
+    .form-box select,
+    .form-box input,
+    .form-box textarea {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+    }
+
+    .btn {
+        margin-top: 20px;
+        background: #ff6b00;
+        color: white;
+        padding: 12px;
+        border: none;
+        width: 100%;
+        border-radius: 12px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: #e85d00;
+        transform: scale(1.03);
+    }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
 </style>
 </head>
 
 <body>
 
-<!-- ==================== NAVIGATION ==================== -->
-<nav class="menu">
-    <a href="#about">About Me</a>
-    <a href="#varian">Varian Rasa</a>
+<header>
+    <img src="logo-ayamkuu.png" alt="Ayamkuu Logo">
+</header>
 
-    <div class="logo-wrap">
-        <img src="logo.png" alt="Logo">
-    </div>
-
-    <a href="#form">Form Pesan</a>
-    <a href="#kontak">Kontak</a>
-</nav>
-
-<!-- ==================== ABOUT ME ==================== -->
-<section id="about" class="section-box">
-    <h2 class="section-title">About Me</h2>
-    <p>
-        AyamKuu adalah UMKM makanan dengan konsep Urban Fast-Casual yang cocok
-        buat anak SMK – Kuliah. Rasa enak, harga pelajar, vibes cozy industrial.
-    </p>
+<section class="hero">
+    <video autoplay muted loop>
+        <source src="ayamkuu-hero-video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-text">Rasakan Kelezatan AYAMKUU!</div>
 </section>
 
-<!-- ==================== VARIAN RASA ==================== -->
-<section id="varian" class="section-box">
-    <h2 class="section-title">Varian Rasa</h2>
+<section class="section" id="rasa">
+    <h2 style="text-align:center;">Varian Rasa AYAMKUU</h2>
 
-    <div class="varian-container">
-        <div class="varian-card">Original Crispy</div>
-        <div class="varian-card">Pedas Manis</div>
-        <div class="varian-card">BBQ Smoke</div>
-        <div class="varian-card">Keju Garlic</div>
+    <div class="rasa-box">
+        <div class="card-rasa">
+            <img src="rasa-manis.jpg" alt="Rasa Manis">
+            <h3>Manis</h3>
+            <p>Harga: Rp 15.000</p>
+        </div>
+        <div class="card-rasa">
+            <img src="rasa-gurih.jpg" alt="Rasa Gurih">
+            <h3>Gurih</h3>
+            <p>Harga: Rp 17.000</p>
+        </div>
+        <div class="card-rasa">
+            <img src="rasa-pedes.jpg" alt="Rasa Pedas">
+            <h3>Pedas</h3>
+            <p>Harga: Rp 18.000</p>
+        </div>
     </div>
 </section>
 
-<!-- ==================== FORM PESAN ==================== -->
-<section id="form" class="section-box">
-    <h2 class="section-title">Form Pemesanan</h2>
-
+<section class="section" id="pemesanan">
+    <h2 style="text-align:center;">Form Pemesanan</h2>
     <div class="form-box">
-        <form>
-            <input type="text" placeholder="Nama">
-            <input type="number" placeholder="Jumlah Pesanan">
-            <textarea placeholder="Alamat" rows="4"></textarea>
-            <button type="submit">Kirim Pesanan</button>
-        </form>
+        <input type="text" id="nama" placeholder="Nama lengkap">
+        <input type="text" id="alamat" placeholder="Alamat lengkap">
+
+        <select id="varian">
+            <option value="Manis - 15000">Manis — Rp 15.000</option>
+            <option value="Gurih - 17000">Gurih — Rp 17.000</option>
+            <option value="Pedas - 18000">Pedas — Rp 18.000</option>
+        </select>
+
+        <textarea id="catatan" rows="3" placeholder="Catatan tambahan (opsional)"></textarea>
+
+        <button class="btn" onclick="kirimWA()">KIRIM PESAN</button>
     </div>
 </section>
 
-<!-- ==================== KONTAK ==================== -->
-<section id="kontak" class="section-box">
-    <h2 class="section-title">Kontak</h2>
-    <p>Instagram: @ayamkuu</p>
-    <p>Whatsapp: 0812-3456-7890</p>
-</section>
+<script>
+// SCROLL REVEAL
+const sections = document.querySelectorAll('.section');
+window.addEventListener('scroll', () => {
+    sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+            sec.classList.add('show');
+        }
+    });
+});
+
+// WHATSAPP AUTO-FILL
+function kirimWA() {
+    let nama = document.getElementById("nama").value;
+    let alamat = document.getElementById("alamat").value;
+    let varian = document.getElementById("varian").value;
+    let catatan = document.getElementById("catatan").value;
+
+    let nomorWA = "6281226816221"; // Nomor kamu
+
+    let pesan = 
+`Halo, saya ingin pesan AYAMKUU:
+
+Nama: ${nama}
+Alamat: ${alamat}
+Varian: ${varian}
+Catatan: ${catatan}
+
+Terima kasih!`;
+
+    let url = "https://wa.me/" + nomorWA + "?text=" + encodeURIComponent(pesan);
+
+    window.open(url, "_blank");
+}
+</script>
 
 </body>
 </html>
