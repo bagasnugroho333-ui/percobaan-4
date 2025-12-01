@@ -1,242 +1,131 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CHICKEN GEN Z — Crispy & Spicy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0b0b0b;
-      --accent:#ff2b2b;
-      --white:#ffffff;
-      --glass: rgba(255,255,255,0.04);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:'Poppins',system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: radial-gradient(ellipse at 10% 10%, rgba(255,40,40,0.03), transparent 10%), linear-gradient(180deg,#070707 0%, #0f0f0f 100%);
-      color:var(--white);
-      -webkit-font-smoothing:antialiased;
-      overflow-x:hidden;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CHICKEN GEN Z — Ayam Goreng Gen Z</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background: #000;
+  overflow-x: hidden;
+}
 
-    /* glowing title */
-    .glow-title{
-      font-size:clamp(28px,6vw,56px);
-      font-weight:800;
-      color:var(--white);
-      text-align:left;
-      text-shadow: 0 0 6px rgba(255,43,43,0.6), 0 0 18px rgba(255,43,43,0.25);
-      position:relative;
-      margin:0;
-    }
-    .subhead{
-      font-size:clamp(14px,2.4vw,18px);
-      opacity:0.95;
-      margin:8px 0 0 0;
-      color:var(--white);
-    }
+/* Glow Text */
+.glow {
+  color: #fff;
+  text-shadow: 0 0 10px red, 0 0 20px red, 0 0 40px red;
+}
 
-    header{
-      padding:30px 6% 60px 6%;
-      display:flex;
-      gap:30px;
-      align-items:center;
-      justify-content:space-between;
-    }
-    .brand{
-      display:flex;gap:18px;align-items:center
-    }
-    .brand-logo{
-      width:72px;height:72px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#ff7b7b);
-      display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;box-shadow:0 8px 24px rgba(255,43,43,0.12);
-    }
+header {
+  padding: 20px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+}
 
-    /* hero */
-    .hero{
-      display:flex;gap:40px;align-items:center;padding:0 6% 60px 6%;
-    }
-    .hero-left{flex:1;min-width:280px}
-    .hero-right{flex:1;display:flex;align-items:center;justify-content:center;position:relative}
+section {
+  padding: 60px 20px;
+  text-align: center;
+}
 
-    .cta-row{display:flex;gap:12px;align-items:center;margin-top:18px}
-    .btn{
-      display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none;
-      box-shadow:0 6px 18px rgba(0,0,0,0.45);backdrop-filter: blur(4px);
-    }
-    .btn-wa{background:linear-gradient(90deg,#25D366,#128C7E);color:#fff}
-    .btn-order{background:transparent;border:2px solid rgba(255,255,255,0.08);color:var(--white)}
+.hero {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
 
-    /* floating plate animation */
-    .plate{
-      width:360px;height:360px;border-radius:50%;background-image:url('images/hero-chicken.png');background-size:cover;background-position:center;box-shadow:0 30px 80px rgba(0,0,0,0.6);transform:translateY(0);
-      animation: float 6s ease-in-out infinite;
-    }
-    @keyframes float{0%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-14px) rotate(1deg)}100%{transform:translateY(0) rotate(-1deg)}}
+.varian-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
 
-    /* variants grid */
-    .variants{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;padding:30px 6%;}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:12px;display:flex;gap:12px;align-items:center;transition:transform .28s, box-shadow .28s;}
-    .card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
-    .card-image{width:86px;height:86px;border-radius:10px;background-size:cover;background-position:center;flex-shrink:0}
-    .variant-name{font-weight:700}
+.varian-card {
+  background: #111;
+  padding: 20px;
+  border-radius: 20px;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(255,0,0,0.2);
+}
 
-    /* about */
-    .about{padding:28px 6%;display:flex;gap:30px;align-items:center}
-    .about-text{flex:1}
-    .about-visual{width:320px;height:220px;border-radius:14px;background-image:url('images/about-chicken.png');background-size:cover;background-position:center;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+.varian-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 25px rgba(255,0,0,0.5);
+}
 
-    /* contact bar */
-    footer{padding:22px 6%;display:flex;justify-content:space-between;align-items:center;gap:20px}
-    .contact-links{display:flex;gap:12px;align-items:center}
-    .micro-link{display:flex;gap:8px;align-items:center;padding:8px 12px;border-radius:10px;background:var(--glass);text-decoration:none;color:var(--white)}
-    .micro-link img{width:20px;height:20px}
+.contact a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin: 10px 0;
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+}
 
-    /* small screens */
-    @media(max-width:880px){
-      .hero{flex-direction:column-reverse;padding-bottom:24px}
-      .plate{width:260px;height:260px}
-      .about{flex-direction:column}
-      header{padding:18px}
-    }
+.contact img {
+  width: 28px;
+}
 
-    /* extra animated background shapes */
-    .bg-shape{position:fixed;pointer-events:none;z-index:0;filter:blur(40px);opacity:0.12}
-    .bg-shape.circle1{width:420px;height:420px;right:-120px;top:-60px;background:radial-gradient(circle at 20% 20%, var(--accent), transparent)}
-    .bg-shape.circle2{width:300px;height:300px;left:-100px;bottom:-100px;background:radial-gradient(circle at 80% 80%, #ff7b7b, transparent)}
-
-    /* glowing small text effect for variant labels */
-    .variant-name, .micro-link span{color:var(--white);text-shadow:0 0 6px rgba(255,43,43,0.5)}
-
-    /* price pill */
-    .price{background:rgba(0,0,0,0.45);padding:6px 10px;border-radius:999px;font-weight:700}
-
-    /* subtle floating icons on hero right */
-    .floating-icon{position:absolute;width:72px;height:72px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ff7b7b);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;box-shadow:0 12px 30px rgba(255,43,43,0.12)}
-    .fi-1{right:20%;top:6%}
-    .fi-2{right:6%;bottom:12%}
-
-  </style>
+footer {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.6;
+}
+</style>
 </head>
 <body>
-  <div class="bg-shape circle1"></div>
-  <div class="bg-shape circle2"></div>
+<header class="glow">CHICKEN GEN Z</header>
 
-  <header>
-    <div class="brand">
-      <div class="brand-logo">CGZ</div>
-      <div>
-        <h1 class="glow-title">CHICKEN GEN Z</h1>
-        <div class="subhead">Ayam goreng pedas, crispy di luar—juicy di dalam. Pas untuk anak sekolah & nongkrong.</div>
-      </div>
-    </div>
+<section id="hero">
+  <div class="hero glow">Ayam Goreng Pedas — Crispy, Juicy, Nagih!</div>
+  <p class="glow">Cocok buat anak sekolah, kuliah, sampai anak nongkrong yang suka pedas tapi tetap hemat.</p>
+</section>
 
-    <nav>
-      <a class="btn btn-wa" href="https://wa.me/6281226671539" target="_blank">📱 Chat WA</a>
-      <a class="btn btn-order" href="#variants">Lihat Varian</a>
-    </nav>
-  </header>
+<section id="about">
+  <h2 class="glow">ABOUT US</h2>
+  <p class="glow">CHICKEN GEN Z — ayam goreng pedas yang crispy di luar, juicy di dalam, dengan level pedas yang nampol banget tapi tetap enak dimakan tiap hari. Rasanya bikin nagih, cocok buat anak sekolah, kuliah, sampai anak nongkrong yang suka makanan pedas tapi nggak mau kantong jebol. Simple, fresh, pedasnya pas — sekali coba langsung auto repeat order.</p>
+</section>
 
-  <section class="hero">
-    <div class="hero-left">
-      <h2 style="font-size:28px;margin:0;color:var(--white)">Crispy • Juicy • Pedas</h2>
-      <p class="subhead">CHICKEN GEN Z — ayam goreng pedas yang crispy di luar, juicy di dalam, dengan level pedas yang nampol banget tapi tetap enak dimakan tiap hari. Rasanya bikin nagih, cocok buat anak sekolah, kuliah, sampai anak nongkrong yang suka makanan pedas tapi nggak mau kantong jebol. Simple, fresh, pedasnya pas — sekali coba langsung auto repeat order.</p>
+<section id="varian">
+  <h2 class="glow">VARIAN RASA</h2>
+  <div class="varian-container">
+    <div class="varian-card glow">KEJU</div>
+    <div class="varian-card glow">BBQ</div>
+    <div class="varian-card glow">BLACK PEPPER</div>
+    <div class="varian-card glow">HOT SPICY</div>
+    <div class="varian-card glow">BBQ SPICY</div>
+  </div>
+</section>
 
-      <div class="cta-row">
-        <a class="btn btn-wa" href="https://wa.me/6281226671539" target="_blank">📲 Pesan via WA</a>
-        <a class="btn btn-order" href="#contact">📦 Order (Grab / Shopee / GoFood)</a>
-      </div>
+<section id="contact" class="contact">
+  <h2 class="glow">CONTACT US</h2>
 
-      <div style="margin-top:18px;display:flex;gap:12px;align-items:center">
-        <div class="price">Mulai dari Rp 18.000</div>
-        <div style="opacity:0.85">Buka setiap hari 10:00 — 22:00</div>
-      </div>
-    </div>
+  <a href="https://wa.me/6281226671539" target="_blank">
+    <img src="images/icon-wa.png" /> 0812-2667-1539
+  </a>
 
-    <div class="hero-right">
-      <div class="plate" aria-hidden="true"></div>
-      <div class="floating-icon fi-1">🔥</div>
-      <div class="floating-icon fi-2">🍗</div>
-    </div>
-  </section>
+  <a href="#" target="_blank">
+    <img src="images/icon-grab.png" /> GrabFood
+  </a>
 
-  <section id="variants" class="variants">
-    <!-- Variant: KEJU -->
-    <div class="card">
-      <div class="card-image" style="background-image:url('images/varian-keju.jpg')"></div>
-      <div>
-        <div class="variant-name">KEJU</div>
-        <div style="font-size:13px;opacity:0.9">Cokelat keju meleleh, gurih & creamy.</div>
-      </div>
-    </div>
+  <a href="#" target="_blank">
+    <img src="images/icon-shopee.png" /> ShopeeFood
+  </a>
 
-    <!-- BBQ -->
-    <div class="card">
-      <div class="card-image" style="background-image:url('images/varian-bbq.jpg')"></div>
-      <div>
-        <div class="variant-name">BBQ</div>
-        <div style="font-size:13px;opacity:0.9">Aroma smoky, manis-gurih sempurna.</div>
-      </div>
-    </div>
+  <a href="#" target="_blank">
+    <img src="images/icon-gofood.png" /> GoFood
+  </a>
+</section>
 
-    <!-- BLACK PEPPER -->
-    <div class="card">
-      <div class="card-image" style="background-image:url('images/varian-blackpepper.jpg')"></div>
-      <div>
-        <div class="variant-name">BLACK PEPPER</div>
-        <div style="font-size:13px;opacity:0.9">Lada hitam tebal, pedas hangat.</div>
-      </div>
-    </div>
-
-    <!-- HOT SPICY -->
-    <div class="card">
-      <div class="card-image" style="background-image:url('images/varian-hotspicy.jpg')"></div>
-      <div>
-        <div class="variant-name">HOT SPICY</div>
-        <div style="font-size:13px;opacity:0.9">Level pedas tinggi untuk yang berani.</div>
-      </div>
-    </div>
-
-    <!-- BBQ SPICY -->
-    <div class="card">
-      <div class="card-image" style="background-image:url('images/varian-bbqspicy.jpg')"></div>
-      <div>
-        <div class="variant-name">BBQ SPICY</div>
-        <div style="font-size:13px;opacity:0.9">Perpaduan smoky & pedas yang seimbang.</div>
-      </div>
-    </div>
-
-  </section>
-
-  <section class="about">
-    <div class="about-text">
-      <h3 style="margin:0 0 8px 0;color:var(--white);text-shadow:0 0 6px rgba(255,43,43,0.45)">Tentang CHICKEN GEN Z</h3>
-      <p style="margin:0;color:var(--white);opacity:0.95">CHICKEN GEN Z — ayam goreng pedas yang crispy di luar, juicy di dalam, dengan level pedas yang nampol banget tapi tetap enak dimakan tiap hari. Rasanya bikin nagih, cocok buat anak sekolah, kuliah, sampai anak nongkrong yang suka makanan pedas tapi nggak mau kantong jebol. Simple, fresh, pedasnya pas — sekali coba langsung auto repeat order.</p>
-    </div>
-    <div class="about-visual" aria-hidden="true"></div>
-  </section>
-
-  <footer id="contact">
-    <div>
-      <div style="font-weight:800">Kontak & Order</div>
-      <div style="margin-top:8px;display:flex;gap:10px;align-items:center">
-        <a class="micro-link" href="https://wa.me/6281226671539" target="_blank"><img src="images/icon-wa.png" alt="WA">0812-2667-1539</a>
-        <!-- Platform links: replace '#' with actual store links -->
-        <a class="micro-link" href="#" target="_blank"><img src="images/icon-grab.png" alt="Grab">GrabFood</a>
-        <a class="micro-link" href="#" target="_blank"><img src="images/icon-shopee.png" alt="Shopee">ShopeeFood</a>
-        <a class="micro-link" href="#" target="_blank"><img src="images/icon-gofood.png" alt="GoFood">GoFood</a>
-      </div>
-    </div>
-
-    <div style="text-align:right;opacity:0.9">
-      <div style="font-weight:700">CHICKEN GEN Z</div>
-      <div style="font-size:13px;margin-top:6px">Made with ❤️ — Simple, Fresh, Pedas</div>
-    </div>
-  </footer>
+<footer>
+  <p>© 2025 CHICKEN GEN Z — All Rights Reserved</p>
+</footer>
 
 </body>
 </html>
-
