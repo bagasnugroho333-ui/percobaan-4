@@ -3,135 +3,22 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>AYAMKUU — Pesan Sekarang</title>
+<title>AYAMKUU — Pesan Sekarang (Upgrade Glowing)</title>
 <style>
 /* ===== Reset & Base ===== */
 * { box-sizing: border-box; margin: 0; padding: 0;}
 html,body { height: 100%; }
-:root{
-  --accent-glow: rgba(230,50,50,0.12);
-  --accent-glow-strong: rgba(230,50,50,0.22);
-  --karamel-1: #2a1f18; /* deep */
-  --karamel-2: #3a2419;
-  --karamel-3: #80543a; /* caramel */
-  --dark-1: #0b0b0d;
-  --text-white: #ffffff;
-}
-
-/* Text style: putih + tipis outline merah */
-body, h1,h2,h3,h4,p,a,button,label {
-  color: var(--text-white);
-  -webkit-text-stroke: 0.35px rgba(200,40,40,0.6);
-  text-shadow:
-    0 0 6px rgba(0,0,0,0.6),
-    0 0 6px rgba(230,50,50,0.06);
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  -webkit-font-smoothing:antialiased;
-}
-
-/* page base */
 body{
-  background: linear-gradient(180deg, var(--dark-1) 0%, #0e0d0d 100%);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg,#0f1013 0%, #0b0b0d 100%);
+  color:#fff;
   line-height:1.5;
+  -webkit-font-smoothing:antialiased;
   scroll-behavior: smooth;
   padding-bottom:60px;
-  overflow-x: hidden;
-  position: relative;
 }
 
-/* =========================
-   Background layers:
-   1) subtle brushed metal/noise texture
-   2) smooth karamel gradient
-   3) moving "smoke" / panas layer (animated radial gradients)
-   ========================= */
-
-/* texture + base color */
-body::before{
-  content:"";
-  position: fixed;
-  inset: 0;
-  z-index: -3;
-  background-image:
-    url("https://www.transparenttextures.com/patterns/brushed-alum.png"),
-    linear-gradient(180deg, rgba(58,36,25,0.88) 0%, rgba(30,20,16,0.94) 60%, rgba(12,10,9,1) 100%);
-  background-size: 240px 240px, cover;
-  background-repeat: repeat, no-repeat;
-  opacity: 0.26;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  filter: contrast(1.08) saturate(0.95);
-}
-
-/* subtle noise overlay for food warmth */
-body::after{
-  content:"";
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  pointer-events: none;
-  background:
-    radial-gradient(1000px 500px at 20% 20%, rgba(255,180,120,0.06), rgba(0,0,0,0) 30%),
-    radial-gradient(800px 420px at 80% 80%, rgba(200,120,70,0.045), rgba(0,0,0,0) 30%);
-  mix-blend-mode: screen;
-  opacity: 0.95;
-}
-
-/* moving "asap panas" smoke layer */
-.smoke-wrap {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-/* multiple smoke blobs for depth */
-.smoke {
-  position: absolute;
-  width: 900px;
-  height: 600px;
-  filter: blur(34px) saturate(1.05);
-  opacity: 0.16;
-  transform: translate3d(0,0,0);
-  animation: floatSmoke 18s linear infinite;
-  mix-blend-mode: screen;
-  background: radial-gradient(circle at 40% 35%, rgba(255,180,120,0.18), rgba(255,120,60,0.06) 25%, rgba(0,0,0,0) 60%);
-  border-radius: 50%;
-}
-
-/* second smoke with different timing/shape */
-.smoke.s2{
-  width: 1100px;
-  height: 700px;
-  opacity: 0.12;
-  filter: blur(44px);
-  animation-duration: 26s;
-  background: radial-gradient(circle at 60% 55%, rgba(200,120,75,0.14), rgba(200,80,40,0.05) 30%, rgba(0,0,0,0) 65%);
-}
-
-/* third smoke - warm ember */
-.smoke.s3{
-  width: 700px;
-  height: 480px;
-  opacity: 0.09;
-  filter: blur(28px);
-  animation-duration: 22s;
-  background: radial-gradient(circle at 30% 60%, rgba(255,210,150,0.12), rgba(255,140,70,0.04) 30%, rgba(0,0,0,0) 65%);
-}
-
-/* movement keyframes - slow meandering (horizontal + subtle vertical) */
-@keyframes floatSmoke {
-  0% { transform: translate3d(-20%, 10vh, 0) scale(1); opacity: 0.12; }
-  25% { transform: translate3d(10%, 5vh, 0) scale(1.05); opacity: 0.16; }
-  50% { transform: translate3d(30%, 15vh, 0) scale(0.95); opacity: 0.14; }
-  75% { transform: translate3d(10%, 8vh, 0) scale(1.02); opacity: 0.17; }
-  100% { transform: translate3d(-20%, 10vh, 0) scale(1); opacity: 0.12; }
-}
-
-/* =================================
-   Header (evenly spaced)
-   ================================= */
+/* ===== Header (evenly spaced) ===== */
 header{
   position: sticky;
   top:0;
@@ -149,7 +36,7 @@ header{
 /* left & right nav */
 .nav-left, .nav-right {
   display:flex;
-  gap:24px;
+  gap:40px;
   align-items:center;
   flex:1;
 }
@@ -163,7 +50,7 @@ header{
 }
 
 .nav-left a, .nav-right a {
-  color: var(--text-white);
+  color: #e6e6e6;
   text-decoration:none;
   font-weight:600;
   font-size:15px;
@@ -172,12 +59,11 @@ header{
   transition: all .25s ease;
   opacity:0.95;
   white-space:nowrap;
-  -webkit-text-stroke: 0.28px rgba(200,40,40,0.6);
 }
 .nav-left a:hover, .nav-right a:hover {
   transform: translateY(-3px);
   color:#fff;
-  text-shadow: 0 6px 18px rgba(255,80,40,0.12);
+  text-shadow: 0 6px 18px rgba(255,107,0,0.18);
 }
 
 /* logo center */
@@ -221,12 +107,18 @@ header{
   width:100%;
   height:100%;
   object-fit:cover;
-  filter: contrast(0.95) brightness(0.72) saturate(1.05);
+  filter: contrast(0.95) brightness(0.7) saturate(1.05);
   border-radius:28px;
 }
-
-/* remove overlay text as requested */
-/* .hero .overlay-text { ... } */
+.hero .overlay-text{
+  position:absolute;
+  z-index:3;
+  text-align:center;
+  color:#fff;
+  font-size:34px;
+  font-weight:700;
+  text-shadow: 0 12px 30px rgba(0,0,0,0.7);
+}
 
 /* ===== Sections Container ===== */
 .container {
@@ -241,7 +133,7 @@ header{
   position: relative;
   border-radius: 30px;
   padding: 26px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
   box-shadow:
     0 6px 30px rgba(2,6,23,0.6),
     0 0 48px rgba(255,107,0,0.03);
@@ -271,7 +163,7 @@ header{
 .section-card h2 {
   font-size:22px;
   margin-bottom:12px;
-  color: var(--text-white);
+  color:#fff;
 }
 
 /* ===== Varian Rasa Cards ===== */
@@ -284,10 +176,10 @@ header{
   z-index:3;
 }
 .card-rasa {
-  width:240px;
+  width:250px;
   height:320px;
   border-radius:18px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
   padding:14px;
   display:flex;
   flex-direction:column;
@@ -326,8 +218,8 @@ header{
   transform: translateZ(26px);
   box-shadow: 0 6px 18px rgba(0,0,0,0.45);
 }
-.card-rasa h3 { margin-bottom:8px; color:var(--text-white); -webkit-text-stroke:0.28px rgba(200,40,40,0.6); }
-.card-rasa p  { color: #ddd; font-weight:600; -webkit-text-stroke:0.18px rgba(200,40,40,0.45); }
+.card-rasa h3 { margin-bottom:8px; color:#fff; }
+.card-rasa p  { color: #ddd; font-weight:600; }
 
 .card-rasa:hover {
   transform: translateY(-18px) rotateX(6deg) scale(1.045);
@@ -416,17 +308,9 @@ header{
   box-shadow: 0 8px 30px rgba(0,0,0,0.5);
   text-align:center;
   transition: transform .2s ease, box-shadow .2s ease;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  justify-content:center;
 }
 .contact-item a { color: #ffd7c9; text-decoration:none; font-weight:700;}
-.contact-item svg { width:20px; height:20px; flex-shrink:0; opacity:0.95; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.45)); }
 .contact-item:hover{ transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
-
-/* small icon next to food services */
-.service-link { display:inline-flex; align-items:center; gap:8px; color: #ffd7c9; text-decoration:none; font-weight:700; }
 
 /* ===== Responsive ===== */
 @media (max-width:900px){
@@ -441,21 +325,10 @@ header{
   .nav-left, .nav-right{ order:2; justify-content:center; }
   .logo { order:1; }
   .container { padding: 0 10px; }
-  .card-rasa { width:46%; }
 }
-
-/* small accessibility focus */
-.card-rasa:focus { outline: 2px solid rgba(255,80,40,0.12); outline-offset: 4px; transform: translateY(-14px) rotateX(6deg) scale(1.03); }
 </style>
 </head>
 <body>
-
-<!-- floating smoke layer (DOM elements to animate) -->
-<div class="smoke-wrap" aria-hidden="true">
-  <div class="smoke s1" style="left:-18%; top:8%; animation-delay: -2s;"></div>
-  <div class="smoke s2" style="left:10%; top: -6%; animation-delay: -6s;"></div>
-  <div class="smoke s3" style="left:52%; top: 20%; animation-delay: -10s;"></div>
-</div>
 
 <!-- HEADER -->
 <header>
@@ -479,7 +352,7 @@ header{
   <video autoplay muted loop playsinline>
     <source src="ayamkuu-hero-video.mp4" type="video/mp4">
   </video>
-  <!-- overlay text removed as requested -->
+  <div class="overlay-text">Rasakan Kelezatan AYAMKUU!</div>
 </section>
 
 <!-- MAIN CONTAINER -->
@@ -487,12 +360,11 @@ header{
 
   <!-- ABOUT -->
   <section id="about" class="section-card section-about" aria-labelledby="about-title">
-    <h2 id="about-title">CHICKEN GEN Z</h2>
+    <h2 id="about-title">About Me</h2>
     <p style="max-width:920px;margin:8px auto 0;text-align:center;color:#e7f8ff;">
-      CHICKEN GEN Z — ayam goreng pedas yang crispy di luar, juicy di dalam, dengan level pedas yang nampol banget
-      tapi tetap enak dimakan tiap hari. Rasanya bikin nagih, cocok buat anak sekolah, kuliah, sampai anak nongkrong
-      yang suka makanan pedas tapi nggak mau kantong jebol.<br><br>
-      Simple, fresh, pedasnya pas — sekali coba langsung auto repeat order.
+      AYAMKUU adalah usaha kuliner fokus pada ayam goreng berempah dengan sentuhan modern.
+      Setiap varian memakai bahan segar, bumbu racikan rumahan, dan proses deep-fry yang renyah.
+      Cocok untuk pelajar & anak nongkrong yang ingin makan nikmat dengan harga ramah kantong.
     </p>
   </section>
 
@@ -501,34 +373,22 @@ header{
     <h2 id="rasa-title" style="text-align:center;">Varian Rasa AYAMKUU</h2>
 
     <div class="rasa-grid" role="list" aria-label="Daftar varian">
-      <article class="card-rasa" role="listitem" tabindex="0" aria-label="Keju">
-        <img src="rasa-keju.jpg" alt="Rasa Keju">
-        <h3>KEJU</h3>
+      <article class="card-rasa" role="listitem" tabindex="0" aria-label="Manis">
+        <img src="rasa-manis.jpg" alt="Rasa Manis">
+        <h3>Manis</h3>
+        <p>Rp 15.000</p>
+      </article>
+
+      <article class="card-rasa" role="listitem" tabindex="0" aria-label="Gurih">
+        <img src="rasa-gurih.jpg" alt="Rasa Gurih">
+        <h3>Gurih</h3>
+        <p>Rp 17.000</p>
+      </article>
+
+      <article class="card-rasa" role="listitem" tabindex="0" aria-label="Pedas">
+        <img src="rasa-pedes.jpg" alt="Rasa Pedas">
+        <h3>Pedas</h3>
         <p>Rp 18.000</p>
-      </article>
-
-      <article class="card-rasa" role="listitem" tabindex="0" aria-label="BBQ">
-        <img src="rasa-bbq.jpg" alt="Rasa BBQ">
-        <h3>BBQ</h3>
-        <p>Rp 19.000</p>
-      </article>
-
-      <article class="card-rasa" role="listitem" tabindex="0" aria-label="Black Pepper">
-        <img src="rasa-blackpepper.jpg" alt="Rasa Black Pepper">
-        <h3>BLACK PEPPER</h3>
-        <p>Rp 20.000</p>
-      </article>
-
-      <article class="card-rasa" role="listitem" tabindex="0" aria-label="Hot Spicy">
-        <img src="rasa-hotspicy.jpg" alt="Rasa Hot Spicy">
-        <h3>HOT SPICY</h3>
-        <p>Rp 20.000</p>
-      </article>
-
-      <article class="card-rasa" role="listitem" tabindex="0" aria-label="BBQ Spicy">
-        <img src="rasa-bbqspicy.jpg" alt="Rasa BBQ Spicy">
-        <h3>BBQ SPICY</h3>
-        <p>Rp 20.000</p>
       </article>
     </div>
   </section>
@@ -542,11 +402,9 @@ header{
       <input type="text" id="alamat" placeholder="Alamat lengkap" aria-label="Alamat lengkap">
 
       <select id="varian" aria-label="Pilih varian">
-        <option value="KEJU - 18000">KEJU — Rp 18.000</option>
-        <option value="BBQ - 19000">BBQ — Rp 19.000</option>
-        <option value="BLACK PEPPER - 20000">BLACK PEPPER — Rp 20.000</option>
-        <option value="HOT SPICY - 20000">HOT SPICY — Rp 20.000</option>
-        <option value="BBQ SPICY - 20000">BBQ SPICY — Rp 20.000</option>
+        <option value="Manis - 15000">Manis — Rp 15.000</option>
+        <option value="Gurih - 17000">Gurih — Rp 17.000</option>
+        <option value="Pedas - 18000">Pedas — Rp 18.000</option>
       </select>
 
       <textarea id="catatan" rows="3" placeholder="Catatan tambahan (opsional)" aria-label="Catatan"></textarea>
@@ -557,66 +415,28 @@ header{
 
   <!-- CONTACT -->
   <section id="contact" class="section-card section-contact" aria-labelledby="contact-title">
-    <h2 id="contact-title" style="text-align:center;">Kontak & Layanan Antar</h2>
+    <h2 id="contact-title" style="text-align:center;">Kontak Kami</h2>
 
     <div class="contact-grid" role="list">
-
-      <div class="contact-item" role="listitem" aria-label="WhatsApp">
-        <!-- simple phone / chat icon -->
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-          <path d="M21 16.5c-.5 1.5-2 3.5-3.5 4-1.5.5-6 .5-9-.5-3-1-5.5-3-6-4.5C1 13.5 1 8.5 2.5 6 4 3.5 7 2 10 2c3 0 5 1 7 2.5 2 1.5 3 5 1.5 8z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <div style="text-align:left;">
-          <div style="font-size:13px;color:#ffd7c9">WhatsApp</div>
-          <div style="margin-top:6px"><a href="https://wa.me/6281226671539" target="_blank" rel="noopener">0812-2667-1539</a></div>
-        </div>
+      <div class="contact-item" role="listitem">
+        <div style="font-size:14px;color:#ffd7c9">WhatsApp</div>
+        <div style="margin-top:8px"><a href="https://wa.me/6281226816221" target="_blank" rel="noopener">0821-2268-16221</a></div>
       </div>
 
-      <div class="contact-item" role="listitem" aria-label="GrabFood">
-        <!-- simple Grab icon (generic fork) -->
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 7h18M6 12h12M8 17h8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <div style="text-align:left;">
-          <div style="font-size:13px;color:#ffd7c9">GrabFood</div>
-          <div style="margin-top:6px"><a class="service-link" href="#" target="_blank" rel="noopener">
-            <!-- small placeholder "bag" icon -->
-            <svg viewBox="0 0 24 24" fill="none" width="14" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M6 7h12v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 7a3 3 0 0 1 6 0" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Link (kosong)
-          </a></div>
-        </div>
+      <div class="contact-item" role="listitem">
+        <div style="font-size:14px;color:#ffd7c9">Instagram</div>
+        <div style="margin-top:8px"><a href="https://instagram.com/ayamkuu" target="_blank" rel="noopener">@ayamkuu</a></div>
       </div>
 
-      <div class="contact-item" role="listitem" aria-label="ShopeeFood">
-        <!-- simple Shopee icon -->
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.2"/>
-          <path d="M8 12h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-        </svg>
-        <div style="text-align:left;">
-          <div style="font-size:13px;color:#ffd7c9">ShopeeFood</div>
-          <div style="margin-top:6px"><a class="service-link" href="#" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" width="14" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M6 7h12v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Link (kosong)
-          </a></div>
-        </div>
+      <div class="contact-item" role="listitem">
+        <div style="font-size:14px;color:#ffd7c9">X / Twitter</div>
+        <div style="margin-top:8px"><a href="https://x.com/ayamkuu" target="_blank" rel="noopener">@ayamkuu</a></div>
       </div>
 
-      <div class="contact-item" role="listitem" aria-label="GoFood">
-        <!-- simple GoFood icon -->
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="5" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/>
-          <path d="M7 10h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-        </svg>
-        <div style="text-align:left;">
-          <div style="font-size:13px;color:#ffd7c9">GoFood</div>
-          <div style="margin-top:6px"><a class="service-link" href="#" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" width="14" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M6 7h12v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Link (kosong)
-          </a></div>
-        </div>
+      <div class="contact-item" role="listitem">
+        <div style="font-size:14px;color:#ffd7c9">Telepon</div>
+        <div style="margin-top:8px">0821-2268-16221</div>
       </div>
-
     </div>
   </section>
 
@@ -624,7 +444,6 @@ header{
 
 <!-- SCRIPTS -->
 <script>
-/* reveal on scroll (keeps from before) */
 const sections = document.querySelectorAll('.section-card, .hero');
 function revealOnScroll(){
   sections.forEach(sec=>{
@@ -639,23 +458,19 @@ function revealOnScroll(){
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
 
-/* WA sending: update nomor sesuai permintaan (081226671539) */
 function kirimWA(){
-  const nama = document.getElementById('nama')?.value || '-';
-  const alamat = document.getElementById('alamat')?.value || '-';
-  const varian = document.getElementById('varian')?.value || '-';
-  const catatan = document.getElementById('catatan')?.value || '-';
+  const nama = document.getElementById('nama').value || '-';
+  const alamat = document.getElementById('alamat').value || '-';
+  const varian = document.getElementById('varian').value || '-';
+  const catatan = document.getElementById('catatan').value || '-';
 
-  // nomor internasional (62 + nomor tanpa leading 0)
-  const nomorWA = "6281226671539";
+  const nomorWA = "6281226816221";
 
-  const pesanPlain = `Halo, saya ingin pesan AYAMKUU:\n\nNama: ${nama}\nAlamat: ${alamat}\nVarian: ${varian}\nCatatan: ${catatan}\n\nTerima kasih!`;
-  const pesan = encodeURIComponent(pesanPlain);
+  const pesan = `Halo, saya ingin pesan AYAMKUU:%0A%0ANama: ${encodeURIComponent(nama)}%0AAlamat: ${encodeURIComponent(alamat)}%0AVarian: ${encodeURIComponent(varian)}%0ACatatan: ${encodeURIComponent(catatan)}%0A%0ATerima kasih!`;
   const url = "https://wa.me/" + nomorWA + "?text=" + pesan;
   window.open(url, "_blank");
 }
 
-/* keyboard accessibility for card focus move (small enhancement) */
 document.addEventListener('focusin', (e)=>{
   const card = e.target.closest('.card-rasa');
   if(card) card.style.transform = 'translateY(-14px) rotateX(6deg) scale(1.03)';
@@ -665,6 +480,5 @@ document.addEventListener('focusout', (e)=>{
   if(card) card.style.transform = '';
 });
 </script>
-
 </body>
 </html>
