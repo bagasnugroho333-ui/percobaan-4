@@ -80,11 +80,23 @@ footer {
 </style>
 </head>
 <body>
-<header class="glow">CHICKEN GEN Z</header>
+<header class="glow">
+  <img src="images/logo.png" alt="CHICKEN GEN Z" style="width:90px; margin-bottom:10px; filter: drop-shadow(0 0 10px red);">
+  <div>CHICKEN GEN Z</div>
+</header>
 
-<section id="hero">
-  <div class="hero glow">Ayam Goreng Pedas — Crispy, Juicy, Nagih!</div>
-  <p class="glow">Cocok buat anak sekolah, kuliah, sampai anak nongkrong yang suka pedas tapi tetap hemat.</p>
+<section id="hero" style="position:relative; padding:0; height:480px; overflow:hidden;">
+
+  <!-- Video Hero Premium -->
+  <video autoplay loop muted playsinline style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; filter:brightness(0.45);">
+    <source src="videos/hero-chicken.mp4" type="video/mp4" />
+  </video>
+
+  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); text-align:center; width:90%;">
+    <div class="hero glow">Ayam Goreng Pedas — Crispy, Juicy, Nagih!</div>
+    <p class="glow" style="font-size:20px;">Cocok buat anak sekolah, kuliah, dan anak nongkrong yang suka pedas tapi tetap hemat.</p>
+  </div>
+
 </section>
 
 <section id="about">
@@ -129,3 +141,4 @@ footer {
 
 </body>
 </html>
+
