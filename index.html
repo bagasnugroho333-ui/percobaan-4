@@ -1,600 +1,205 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>CHICKEN GEN Z — Ayam Goreng Pedas Crispy</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AYAMKUU — Pesan Sekarang</title>
+
 <style>
-/* ===== Reset & Base ===== */
-* { box-sizing: border-box; margin: 0; padding: 0;}
-html,body { height: 100%; }
-body{
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  position: relative;
-  color:#fff;
-  line-height:1.5;
-  -webkit-font-smoothing:antialiased;
-  scroll-behavior: smooth;
-  padding-bottom:60px;
-  overflow-x: hidden;
-}
+    /* ===== Industrial Moving Background — Karamel Lembut ===== */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #000; /* fallback */
+        perspective: 1000px;
+        position: relative;
+        overflow-x: hidden;
+    }
 
-/* Animated gradient background - Layer 1 */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: linear-gradient(
-    135deg,
-    #2a1810 0%,
-    #3a3a3a 25%,
-    #1a1a1a 50%,
-    #4a2818 75%,
-    #2d2d2d 100%
-  );
-  background-size: 400% 400%;
-  animation: gradientShift 20s ease infinite;
-}
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
 
-/* Soft overlay gradient - Layer 2 */
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: linear-gradient(
-    90deg,
-    rgba(139, 69, 19, 0.15) 0%,
-    rgba(80, 80, 80, 0.2) 35%,
-    rgba(210, 180, 140, 0.12) 70%,
-    rgba(139, 69, 19, 0.15) 100%
-  );
-  background-size: 200% 100%;
-  animation: flowHorizontal 15s linear infinite;
-  opacity: 0.6;
-}
+      /* Layer background */
+      background:
+        url("https://www.transparenttextures.com/patterns/brushed-alum.png"),
+        radial-gradient(circle at 25% 35%, rgba(255, 179, 109, 0.09) 0%, rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, #0d0d0d 0%, #1a1411 100%);
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+      background-size: 280px 280px, cover, cover;
+      background-repeat: repeat, no-repeat, no-repeat;
+      z-index: -1;
+      opacity: 0.28;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      filter: contrast(1.15) brightness(1.04);
 
-@keyframes flowHorizontal {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 200% 0%; }
-}
+      /* Gerakan lebih cepat (12s) */
+      animation: moveBg 12s linear infinite;
+    }
 
-/* Text with red glow effect */
-.text-glow {
-  color: #fff;
-  text-shadow: 
-    0 0 10px rgba(255, 50, 50, 0.8),
-    0 0 20px rgba(255, 50, 50, 0.6),
-    0 0 30px rgba(255, 50, 50, 0.4),
-    0 0 40px rgba(255, 50, 50, 0.2);
-}
+    @keyframes moveBg {
+      0%   { background-position: 0px 0px, 0 0, 0 0; }
+      100% { background-position: 900px 750px, 0 0, 0 0; }
+    }
 
-/* ===== Header ===== */
-header{
-  position: sticky;
-  top:0;
-  z-index:999;
-  display:flex;
-  align-items:center;
-  justify-content:space-evenly;
-  gap:40px;
-  padding:12px 32px;
-  background: rgba(10,10,12,0.45);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(255,255,255,0.03);
-}
+    /* ======================= */
+    /* ====== HEADER ========= */
+    /* ======================= */
 
-.nav-left, .nav-right {
-  display:flex;
-  gap:40px;
-  align-items:center;
-  flex:1;
-}
+    header {
+        display: flex;
+        align-items: center;
+        padding: 20px 5%;
+        justify-content: space-between;
+        position: relative;
+        z-index: 2;
+    }
 
-.nav-left { justify-content:flex-end; }
-.nav-right { justify-content:flex-start; }
+    header h1 {
+        margin: 0;
+        font-size: 28px;
+        color: #fff;
+        letter-spacing: 1px;
+    }
 
-.nav-left a, .nav-right a {
-  color: #e6e6e6;
-  text-decoration:none;
-  font-weight:600;
-  font-size:15px;
-  padding:8px 10px;
-  border-radius:10px;
-  transition: all .25s ease;
-  opacity:0.95;
-  white-space:nowrap;
-}
-.nav-left a:hover, .nav-right a:hover {
-  transform: translateY(-3px);
-  color:#fff;
-  text-shadow: 0 6px 18px rgba(255,50,50,0.6);
-}
+    nav a {
+        color: #fff;
+        margin-left: 20px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+    }
 
-/* logo center */
-.logo {
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:6px 12px;
-  border-radius:14px;
-  transition: transform .28s ease, box-shadow .28s ease;
-  transform-style: preserve-3d;
-  flex-shrink:0;
-}
-.logo img{
-  height:56px;
-  display:block;
-  transform: translateZ(10px);
-}
-.logo:hover{
-  transform: translateY(-6px) rotateX(6deg);
-  box-shadow: 0 8px 30px rgba(255,50,50,0.3), 0 2px 8px rgba(255,50,50,0.2) inset;
-}
+    nav a:hover {
+        color: #ffbd7b;
+    }
 
-/* ===== Hero ===== */
-.hero{
-  position:relative;
-  height:420px;
-  max-height:54vh;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin:28px auto;
-  width: min(1200px, 96%);
-  border-radius:28px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.6), 0 0 60px rgba(255,50,50,0.15);
-  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.2));
-  padding:0;
-}
-.hero video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter: contrast(0.95) brightness(0.7) saturate(1.05);
-  border-radius:28px;
-}
+    /* ======================= */
+    /* ====== HERO AREA ====== */
+    /* ======================= */
 
-/* ===== Sections Container ===== */
-.container {
-  width: min(1200px, 96%);
-  margin: 28px auto;
-  display: grid;
-  gap: 28px;
-  grid-template-columns: 1fr;
-}
+    .hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 80px 5%;
+        color: white;
+        position: relative;
+        z-index: 3;
+    }
 
-.section-card {
-  position: relative;
-  border-radius: 30px;
-  padding: 26px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-  box-shadow:
-    0 6px 30px rgba(2,6,23,0.6),
-    0 0 48px rgba(255,50,50,0.08);
-  transition: transform .35s cubic-bezier(.2,.9,.3,1), box-shadow .35s ease;
-  overflow: visible;
-}
+    .hero-text {
+        max-width: 50%;
+    }
 
-.section-card::after{
-  content:"";
-  position:absolute;
-  inset: -2px;
-  border-radius: inherit;
-  z-index:0;
-  pointer-events:none;
-  box-shadow: 0 0 40px rgba(255,50,50,0.12);
-  opacity:1;
-  transition: box-shadow .35s ease, opacity .35s ease;
-}
+    .hero-text h2 {
+        font-size: 48px;
+        margin: 0 0 20px;
+        font-weight: 800;
+        line-height: 1.1;
+    }
 
-.section-card > * { position: relative; z-index: 2; }
+    .hero-text p {
+        font-size: 18px;
+        opacity: 0.8;
+    }
 
-.section-about::after  { box-shadow: 0 0 42px rgba(255,50,50,0.15); }
-.section-rasa::after   { box-shadow: 0 0 42px rgba(255,80,80,0.12); }
-.section-form::after   { box-shadow: 0 0 50px rgba(230,57,70,0.20); }
-.section-contact::after{ box-shadow: 0 0 38px rgba(255,100,100,0.15); }
+    .hero-video {
+        width: 45%;
+        transform: translateZ(0);
+        position: relative;
+        z-index: 3;
+    }
 
-.section-card h2 {
-  font-size:22px;
-  margin-bottom:12px;
-}
+    .hero-video video {
+        width: 100%;
+        border-radius: 14px;
+        box-shadow: 0 0 30px rgba(255, 170, 120, 0.25);
+    }
 
-/* ===== Varian Rasa Cards ===== */
-.rasa-grid {
-  display:flex;
-  gap:22px;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin-top:8px;
-  z-index:3;
-}
-.card-rasa {
-  width:230px;
-  height:320px;
-  border-radius:18px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-  padding:14px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
-  transform-style:preserve-3d;
-  transition: transform .42s cubic-bezier(.2,.9,.3,1), box-shadow .42s ease;
-  box-shadow:
-    0 18px 50px rgba(2,6,23,0.6),
-    0 6px 24px rgba(0,0,0,0.45),
-    inset 0 -6px 18px rgba(255,255,255,0.02);
-  cursor:pointer;
-  position:relative;
-  overflow:visible;
-}
-.card-rasa::before{
-  content:"";
-  position:absolute;
-  bottom:12px;
-  left:50%;
-  transform:translateX(-50%);
-  width:70%;
-  height:18px;
-  border-radius:50%;
-  filter: blur(18px);
-  z-index:0;
-  background: linear-gradient(90deg, rgba(255,80,80,0.15), rgba(255,50,50,0.12));
-  transition: all .42s ease;
-}
-.card-rasa img{
-  width: 100%;
-  height: 180px;
-  object-fit:cover;
-  border-radius:12px;
-  margin-bottom:12px;
-  transform: translateZ(26px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
-}
-.card-rasa h3 { 
-  margin-bottom:8px; 
-  font-size:18px;
-}
-.card-rasa p  { 
-  font-weight:600;
-  font-size:16px;
-}
+    /* ======================= */
+    /* ====== SECTION AREA === */
+    /* ======================= */
 
-.card-rasa:hover {
-  transform: translateY(-18px) rotateX(6deg) scale(1.045);
-  box-shadow:
-    0 40px 80px rgba(2,6,23,0.75),
-    0 12px 40px rgba(0,0,0,0.6);
-}
-.card-rasa:hover::before{
-  transform: translateX(-50%) scaleX(1.05);
-  background: linear-gradient(90deg, rgba(255,80,80,0.25), rgba(255,50,50,0.20));
-  height:22px;
-  filter: blur(22px);
-}
+    section {
+        padding: 80px 5%;
+        color: #fff;
+        position: relative;
+        z-index: 3;
+    }
 
-/* ===== Form Pesanan ===== */
-.form-red {
-  max-width:560px;
-  margin: 0 auto;
-  border-radius:28px;
-  padding:22px;
-  background: linear-gradient(180deg, #e35a67 0%, #d43345 100%);
-  box-shadow: 0 20px 60px rgba(227,89,100,0.18), 0 6px 18px rgba(0,0,0,0.6);
-  transition: transform .32s ease, box-shadow .32s ease;
-  position:relative;
-  overflow:visible;
-}
-.form-red:hover{
-  transform: translateY(-8px);
-  box-shadow: 0 30px 90px rgba(227,89,100,0.22), 0 10px 32px rgba(0,0,0,0.6);
-}
-.form-red::after{
-  content:"";
-  position:absolute;
-  inset: -2px;
-  border-radius:inherit;
-  z-index:0;
-  pointer-events:none;
-  box-shadow: 0 0 48px rgba(227,89,100,0.12);
-}
+    h3 {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
 
-.form-red input, .form-red select, .form-red textarea {
-  width:100%;
-  border-radius:12px;
-  border: none;
-  padding:12px 14px;
-  margin-top:10px;
-  background: rgba(255,255,255,0.95);
-  color:#111;
-  font-weight:600;
-  outline: none;
-  box-shadow: inset 0 -3px 8px rgba(0,0,0,0.06);
-}
-.form-red ::placeholder { color: #777; font-weight:500; }
+    p {
+        max-width: 700px;
+        opacity: 0.9;
+    }
 
-.btn-red {
-  width:100%;
-  margin-top:14px;
-  padding:12px;
-  background: #0f1724;
-  color: #fff;
-  border-radius:10px;
-  border: none;
-  font-weight:700;
-  cursor:pointer;
-  transition: transform .18s ease, box-shadow .18s ease;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.5);
-}
-.btn-red:hover{
-  transform: translateY(-4px);
-  box-shadow: 0 18px 48px rgba(0,0,0,0.65), 0 0 30px rgba(255,255,255,0.02) inset;
-}
+    /* ======================= */
+    /* ====== FOOTER ========= */
+    /* ======================= */
 
-/* ===== Contact block ===== */
-.contact-grid {
-  display:flex;
-  gap:16px;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin-top:12px;
-}
-.contact-item{
-  min-width:200px;
-  padding:16px;
-  border-radius:12px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-  text-align:center;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.contact-item a { 
-  color: #fff;
-  text-decoration:none; 
-  font-weight:700;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-}
-.contact-item:hover{ 
-  transform: translateY(-6px); 
-  box-shadow: 0 20px 50px rgba(255,50,50,0.3); 
-}
-
-.delivery-icon {
-  font-size: 24px;
-  display: inline-block;
-}
-
-/* ===== Responsive ===== */
-@media (max-width:900px){
-  .nav-left, .nav-right { gap:14px; }
-  header { padding:10px 18px; gap:20px; }
-  .hero { height:320px; border-radius:20px;}
-  .logo img { height:48px; }
-  .rasa-grid { gap:14px; }
-  .card-rasa { width: 200px; height: 300px; }
-}
-@media (max-width:640px){
-  header{ flex-direction:column; gap:10px; padding:12px;}
-  .nav-left, .nav-right{ order:2; justify-content:center; }
-  .logo { order:1; }
-  .container { padding: 0 10px; }
-  .card-rasa { width: 180px; height: 280px; }
-}
+    footer {
+        background: #0d0d0d;
+        padding: 40px;
+        text-align: center;
+        color: #fff;
+        opacity: 0.9;
+    }
 </style>
 </head>
+
 <body>
 
-<!-- HEADER -->
 <header>
-  <div class="nav-left">
-    <a href="#about">About</a>
-    <a href="#rasa">Menu</a>
-  </div>
-
-  <a class="logo" href="#top" aria-label="Logo">
-    <img src="logo-ayamkuu.png" alt="Logo CHICKEN GEN Z">
-  </a>
-
-  <div class="nav-right">
-    <a href="#pemesanan">Pesan</a>
-    <a href="#contact">Kontak</a>
-  </div>
+    <h1>AYAMKUU</h1>
+    <nav>
+        <a href="#about">Tentang</a>
+        <a href="#menu">Menu</a>
+        <a href="#order">Pesan</a>
+        <a href="#kontak">Kontak</a>
+    </nav>
 </header>
 
-<!-- HERO -->
-<section class="hero" id="top" aria-label="Hero">
-  <video autoplay muted loop playsinline>
-    <source src="ayamkuu-hero-video.mp4" type="video/mp4">
-  </video>
+<section class="hero">
+    <div class="hero-text">
+        <h2>Ayam Enak<br>Harga Pelajar</h2>
+        <p>AyamKuu adalah solusi makan enak, cepat, dan pas di kantong. Cocok buat anak sekolah, kuliah, sampai pekerja sibuk.</p>
+    </div>
+
+    <div class="hero-video">
+        <video autoplay muted loop src="video-ayam.mp4"></video>
+    </div>
 </section>
 
-<!-- MAIN CONTAINER -->
-<main class="container">
+<section id="about">
+    <h3>Tentang Kami</h3>
+    <p>AyamKuu dibuat untuk kamu yang pengen makan enak tanpa mahal. Kami pakai bahan segar, bumbu racikan khas, dan teknik masak efisien supaya tetap affordble dan premium.</p>
+</section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section-card section-about" aria-labelledby="about-title">
-    <h2 id="about-title" class="text-glow">About CHICKEN GEN Z</h2>
-    <p class="text-glow" style="max-width:920px;margin:8px auto 0;text-align:center;line-height:1.8;">
-      CHICKEN GEN Z — ayam goreng pedas yang crispy di luar, juicy di dalam, dengan level pedas yang nampol banget tapi tetap enak dimakan tiap hari.
-      <br><br>
-      Rasanya bikin nagih, cocok buat anak sekolah, kuliah, sampai anak nongkrong yang suka makanan pedas tapi nggak mau kantong jebol.
-      <br><br>
-      Simple, fresh, pedasnya pas — sekali coba langsung auto repeat order.
-    </p>
-  </section>
+<section id="menu">
+    <h3>Varian Rasa</h3>
+    <p>Kami punya berbagai varian: crispy original, pedas manis, smokey BBQ, dan sambal matah karamel pedas.</p>
+</section>
 
-  <!-- VARIAN RASA -->
-  <section id="rasa" class="section-card section-rasa" aria-labelledby="rasa-title">
-    <h2 id="rasa-title" class="text-glow" style="text-align:center;">Menu CHICKEN GEN Z</h2>
+<section id="order">
+    <h3>Form Pemesanan</h3>
+    <p>Isi data sederhana, dan pesananmu langsung diproses cepat.</p>
+</section>
 
-    <div class="rasa-grid" role="list" aria-label="Daftar menu">
-      
-      <!-- KEJU -->
-      <article class="card-rasa" role="listitem" tabindex="0" aria-label="Keju">
-        <img src="rasa-keju.jpg" alt="Chicken Keju">
-        <h3 class="text-glow">KEJU</h3>
-        <p class="text-glow">Rp 16.000</p>
-      </article>
+<section id="kontak">
+    <h3>Kontak</h3>
+    <p>Hubungi kami melalui WhatsApp atau Instagram untuk info lebih lanjut.</p>
+</section>
 
-      <!-- BBQ -->
-      <article class="card-rasa" role="listitem" tabindex="0" aria-label="BBQ">
-        <img src="rasa-bbq.jpg" alt="Chicken BBQ">
-        <h3 class="text-glow">BBQ</h3>
-        <p class="text-glow">Rp 17.000</p>
-      </article>
+<footer>
+    © 2024 AYAMKUU — Semua Hak Dilindungi
+</footer>
 
-      <!-- BLACK PEPPER -->
-      <article class="card-rasa" role="listitem" tabindex="0" aria-label="Black Pepper">
-        <img src="rasa-blackpepper.jpg" alt="Chicken Black Pepper">
-        <h3 class="text-glow">BLACK PEPPER</h3>
-        <p class="text-glow">Rp 18.000</p>
-      </article>
-
-      <!-- HOT SPICY -->
-      <article class="card-rasa" role="listitem" tabindex="0" aria-label="Hot Spicy">
-        <img src="rasa-hotspicy.jpg" alt="Chicken Hot Spicy">
-        <h3 class="text-glow">HOT SPICY</h3>
-        <p class="text-glow">Rp 19.000</p>
-      </article>
-
-      <!-- BBQ SPICY -->
-      <article class="card-rasa" role="listitem" tabindex="0" aria-label="BBQ Spicy">
-        <img src="rasa-bbqspicy.jpg" alt="Chicken BBQ Spicy">
-        <h3 class="text-glow">BBQ SPICY</h3>
-        <p class="text-glow">Rp 20.000</p>
-      </article>
-      
-    </div>
-  </section>
-
-  <!-- FORM -->
-  <section id="pemesanan" class="section-card section-form" aria-labelledby="form-title">
-    <h2 id="form-title" class="text-glow" style="text-align:center;">Form Pemesanan</h2>
-
-    <div class="form-red" role="form" aria-label="Form pemesanan CHICKEN GEN Z">
-      <input type="text" id="nama" placeholder="Nama lengkap" aria-label="Nama lengkap">
-      <input type="text" id="alamat" placeholder="Alamat lengkap" aria-label="Alamat lengkap">
-
-      <select id="varian" aria-label="Pilih varian">
-        <option value="KEJU - 16000">KEJU — Rp 16.000</option>
-        <option value="BBQ - 17000">BBQ — Rp 17.000</option>
-        <option value="BLACK PEPPER - 18000">BLACK PEPPER — Rp 18.000</option>
-        <option value="HOT SPICY - 19000">HOT SPICY — Rp 19.000</option>
-        <option value="BBQ SPICY - 20000">BBQ SPICY — Rp 20.000</option>
-      </select>
-
-      <textarea id="catatan" rows="3" placeholder="Catatan tambahan (opsional)" aria-label="Catatan"></textarea>
-
-      <button class="btn-red" onclick="kirimWA()">KIRIM PESAN</button>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="section-card section-contact" aria-labelledby="contact-title">
-    <h2 id="contact-title" class="text-glow" style="text-align:center;">Kontak & Pesan Online</h2>
-
-    <div class="contact-grid" role="list">
-      
-      <!-- WhatsApp -->
-      <div class="contact-item" role="listitem">
-        <div class="text-glow" style="font-size:14px;margin-bottom:8px;">WhatsApp</div>
-        <a href="https://wa.me/6281226671539" target="_blank" rel="noopener" class="text-glow">
-          <span class="delivery-icon">📱</span>
-          <span>081226671539</span>
-        </a>
-      </div>
-
-      <!-- GrabFood -->
-      <div class="contact-item" role="listitem">
-        <div class="text-glow" style="font-size:14px;margin-bottom:8px;">GrabFood</div>
-        <a href="https://food.grab.com/id/en/restaurant/chicken-gen-z-delivery" target="_blank" rel="noopener" class="text-glow">
-          <span class="delivery-icon">🟢</span>
-          <span>Order via Grab</span>
-        </a>
-      </div>
-
-      <!-- ShopeeFood -->
-      <div class="contact-item" role="listitem">
-        <div class="text-glow" style="font-size:14px;margin-bottom:8px;">ShopeeFood</div>
-        <a href="https://shopee.co.id/universal-link/food/chicken-gen-z" target="_blank" rel="noopener" class="text-glow">
-          <span class="delivery-icon">🟠</span>
-          <span>Order via Shopee</span>
-        </a>
-      </div>
-
-      <!-- GoFood -->
-      <div class="contact-item" role="listitem">
-        <div class="text-glow" style="font-size:14px;margin-bottom:8px;">GoFood</div>
-        <a href="https://gofood.co.id/chicken-gen-z" target="_blank" rel="noopener" class="text-glow">
-          <span class="delivery-icon">🔴</span>
-          <span>Order via Gojek</span>
-        </a>
-      </div>
-      
-    </div>
-  </section>
-
-</main>
-
-<!-- SCRIPTS -->
-<script>
-// Scroll reveal animation
-const sections = document.querySelectorAll('.section-card, .hero');
-function revealOnScroll(){
-  sections.forEach(sec=>{
-    const rect = sec.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 120){
-      sec.classList.add('show');
-      sec.style.opacity = 1;
-      sec.style.transform = 'translateY(0)';
-    }
-  });
-}
-window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll);
-
-// WhatsApp Order Function
-function kirimWA(){
-  const nama = document.getElementById('nama').value || '-';
-  const alamat = document.getElementById('alamat').value || '-';
-  const varian = document.getElementById('varian').value || '-';
-  const catatan = document.getElementById('catatan').value || '-';
-
-  const nomorWA = "6281226671539";
-
-  const pesan = `Halo, saya ingin pesan CHICKEN GEN Z:%0A%0ANama: ${encodeURIComponent(nama)}%0AAlamat: ${encodeURIComponent(alamat)}%0AVarian: ${encodeURIComponent(varian)}%0ACatatan: ${encodeURIComponent(catatan)}%0A%0ATerima kasih!`;
-  
-  const url = "https://wa.me/" + nomorWA + "?text=" + pesan;
-  window.open(url, "_blank");
-}
-
-// Card focus effect
-document.addEventListener('focusin', (e)=>{
-  const card = e.target.closest('.card-rasa');
-  if(card) card.style.transform = 'translateY(-14px) rotateX(6deg) scale(1.03)';
-});
-document.addEventListener('focusout', (e)=>{
-  const card = e.target.closest('.card-rasa');
-  if(card) card.style.transform = '';
-});
-</script>
 </body>
 </html>
